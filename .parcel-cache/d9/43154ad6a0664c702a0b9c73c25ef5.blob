@@ -1,0 +1,20 @@
+var helpers = require("./node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+try {
+  var e, r = require("react-dom").render, t = require("react"), n = (e = t) && e.__esModule ? e.default : e, a = t.Component;
+  class l extends a {
+    constructor(e) {
+      super(e);
+    }
+    render() {
+      return n.createElement("div", null, "Gmmak thami bokka");
+    }
+  }
+  r(n.createElement(l, null), document.getElementById("app"));
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
