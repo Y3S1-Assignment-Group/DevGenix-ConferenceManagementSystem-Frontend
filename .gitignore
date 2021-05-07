@@ -59,6 +59,10 @@ node_modules/
 # Output of 'npm pack'
 *.tgz
 
+.parcel-cache
+dist
+.idea
+
 # Yarn Integrity file
 .yarn-integrity
 
