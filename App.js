@@ -1,16 +1,10 @@
-import React, {Component} from 'react';
+import React, { Component } from "react";
+import RouteComponent from "./src/route/RouteComponent";
 
 class App extends Component {
-    constructor(props) {
-        super(props);
-    }
-    render() {
-        return (
-            <div>
-                Gmmak thami bokka
-            </div>
-        );
-    }
+  render() {
+    return <RouteComponent />;
+  }
 }
 
 export default App;
