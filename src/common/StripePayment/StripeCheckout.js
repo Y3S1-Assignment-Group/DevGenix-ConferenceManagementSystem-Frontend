@@ -2,7 +2,7 @@ import React,{useState}  from 'react'
 import StripeCheck from 'react-stripe-checkout'
 
 function StripeCheckout() {
-    const [product, setProduct] = useState({
+    const [payment, setProduct] = useState({
         name:"react from FB",
         price:"10",
         productby:"FB"
@@ -11,9 +11,9 @@ function StripeCheckout() {
     const makePayment = token =>{
         const body = {
             token,
-            product
+            payment
         }
-
+        console.log(body)
         const header = {
             "COntent-Type" : "application/json"
         }
