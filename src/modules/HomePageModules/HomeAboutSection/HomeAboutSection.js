@@ -1,12 +1,22 @@
 import React, { Component } from "react";
-import Countdown from "react-countdown";
+import AboutImg from "url:../../../assets/home/about.svg";
+import "./HomeAboutSection.css";
 
 export class HomeAboutSection extends Component {
   render() {
     return (
-      <div style={{ backgroundColor: "#350142", color: "#ffffff" }}>
+      <div
+        className="pt-4"
+        style={{ backgroundColor: "#350142", color: "#ffffff" }}
+      >
         <div className="container text-center pt-5 pb-5">
-          <h1>About Our Conference</h1>
+          <img
+            src={AboutImg}
+            className="img-fluid"
+            alt="aboutImg"
+            style={{ width: "300px" }}
+          />
+          <h1 className="mt-4">About Our Conference</h1>
           <hr />
           <div className="container">
             <p>
@@ -19,7 +29,6 @@ export class HomeAboutSection extends Component {
               Primary objective of the ICAC is to uplift the research culture
               and the quality of research done by Sri Lankan researchers
             </p>
-            <Countdown date={Date.now() + 10000000} />
           </div>
         </div>
       </div>

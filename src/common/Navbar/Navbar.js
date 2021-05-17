@@ -49,7 +49,7 @@ export class Navbar extends Component {
                   style={{ color: "#ffffff" }}
                 >
                   <ExploreIcon />
-                  EXPLORE
+                  ABOUT
                 </a>
               </li>
             </ul>
