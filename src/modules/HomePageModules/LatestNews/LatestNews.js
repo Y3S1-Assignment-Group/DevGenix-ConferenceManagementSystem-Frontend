@@ -11,7 +11,7 @@ import {
 export class LatestNews extends Component {
   render() {
     return (
-      <div>
+      <div className="container">
         <div className="row">
           <h1>LATEST NEWS</h1>
           <div className="col-lg-4 col-sm-12">

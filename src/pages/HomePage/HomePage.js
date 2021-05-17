@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Navbar from "../../common/Navbar/Navbar";
 import HomeAboutSection from "../../modules/HomePageModules/HomeAboutSection/HomeAboutSection";
 import HomeHeroSection from "../../modules/HomePageModules/HomeHeroSection/HomeHeroSection";
 import LatestNews from "../../modules/HomePageModules/LatestNews/LatestNews";
