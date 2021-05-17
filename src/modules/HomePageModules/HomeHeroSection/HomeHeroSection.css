@@ -1,0 +1,11 @@
+.HomeHeroDiv {
+  height: 100vh;
+  background-image: linear-gradient(
+    to right top,
+    #320e3b,
+    #420f4f,
+    #540d63,
+    #650978,
+    #78008e
+  );
+}

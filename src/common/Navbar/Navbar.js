@@ -7,12 +7,12 @@ export class Navbar extends Component {
   render() {
     return (
       <div>
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <nav className="navbar navbar-expand-lg">
           <a className="navbar-brand" href="/">
             <span
-              style={{ fontSize: "30px", fontWeight: "bold", color: "#015d87" }}
+              style={{ fontSize: "30px", fontWeight: "bold", color: "#ffffff" }}
             >
-              CONFERENCE<span style={{ color: "#e36200" }}>APP</span>
+              ICAF<span style={{ color: "#ffb10a" }}>2021</span>
             </span>
           </a>
           <button
@@ -36,7 +36,7 @@ export class Navbar extends Component {
                 <a
                   className="nav-link navLinkTab"
                   href="/"
-                  style={{ color: "#0082bd" }}
+                  style={{ color: "#ffffff" }}
                 >
                   <HomeIcon />
                   HOME
@@ -46,7 +46,7 @@ export class Navbar extends Component {
                 <a
                   className="nav-link navLinkTab"
                   href="/explore"
-                  style={{ color: "#0082bd" }}
+                  style={{ color: "#ffffff" }}
                 >
                   <ExploreIcon />
                   EXPLORE

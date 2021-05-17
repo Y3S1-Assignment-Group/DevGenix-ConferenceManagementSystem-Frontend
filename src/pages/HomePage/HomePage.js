@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import Navbar from "../../common/Navbar/Navbar";
-import HomeHeroCarousel from "../../modules/HomePageModules/HomeHeroCarousel";
+import HomeAboutSection from "../../modules/HomePageModules/HomeAboutSection/HomeAboutSection";
+import HomeHeroSection from "../../modules/HomePageModules/HomeHeroSection/HomeHeroSection";
 
 class HomePage extends Component {
   render() {
     return (
       <div style={{ height: "100vh" }}>
-        <Navbar />
-        <HomeHeroCarousel />
+        <HomeHeroSection />
+        <HomeAboutSection />
       </div>
     );
   }
