@@ -1,11 +1,16 @@
-body{
-    height: 100%;
-    background-image: linear-gradient(
-            to right top,
-            #320e3b,
-            #420f4f,
-            #540d63,
-            #650978,
-            #78008e
-    );
+body {
+  height: 100vh;
+  background-image: linear-gradient(
+    to right,
+    #320e3b,
+    #420f4f,
+    #540d63,
+    #650978,
+    #78008e
+  );
+}
+
+.hrTopic {
+  width: 20%;
+  color: rgb(187, 100, 0);
 }

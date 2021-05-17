@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import HomeAboutSection from "../../modules/HomePageModules/HomeAboutSection/HomeAboutSection";
 import HomeHeroSection from "../../modules/HomePageModules/HomeHeroSection/HomeHeroSection";
+import KeyNoteSpeakers from "../../modules/HomePageModules/KeyNoteSpeakers/KeyNoteSpeakers";
 import LatestNews from "../../modules/HomePageModules/LatestNews/LatestNews";
+import Footer from "../../common/Footer/Footer";
 
 class HomePage extends Component {
   render() {
@@ -10,6 +12,8 @@ class HomePage extends Component {
         <HomeHeroSection />
         <HomeAboutSection />
         <LatestNews />
+        <KeyNoteSpeakers />
+        <Footer />
       </div>
     );
   }
