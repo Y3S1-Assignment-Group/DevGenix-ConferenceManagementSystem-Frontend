@@ -1,14 +1,13 @@
 import React, {Component} from 'react';
 import { Container,Card,CardBody,Col, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import Navbar from "../../common/Navbar/Navbar";
+import StripeCheckout from "../../common/StripePayment/StripeCheckout";
 
-class RegPresenter extends Component {
+class RegAttendee extends Component {
 
     constructor(props) {
         super(props);
     }
-
-
 
     render() {
         return (
@@ -16,7 +15,7 @@ class RegPresenter extends Component {
                 <Navbar />
                 <Container className="mt-5">
                     <Card>
-                        <CardBody className="p-5" >
+                        <CardBody className="p-5">
                             <Form>
                                 <FormGroup row>
                                     <Label for="First Name" sm={2}>First Name</Label>
@@ -114,72 +113,17 @@ class RegPresenter extends Component {
                                 </FormGroup>
 
 
-                            </Form>
-                        </CardBody>
-                    </Card>
-                </Container>
-
-
-
-                <Container className="mt-5">
-                    <Card>
-                        <CardBody className="p-5">
-                            <Form>
                                 <FormGroup row>
-                                    <Label for="WorkshopName" sm={2}>Workshop Name</Label>
-                                    <Col sm={5}>
-                                        <Input type="text" name="workshopName" id="workshopName" placeholder="Enter workshop name" />
-                                    </Col>
+
                                 </FormGroup>
 
-
-                                <FormGroup row>
-                                    <Label for="Last Name " sm={2}>Date</Label>
-                                    <Col sm={5}>
-                                        <Input type="date" name="lastName" id="lastName" placeholder="Enter last name" />
-                                    </Col>
-                                </FormGroup>
-
-                                <FormGroup row>
-                                    <Label for="timeFrom " sm={2}>Starting time</Label>
-                                    <Col sm={5}>
-                                        <Input type="time" name="timeFrom" id="timeFrom"  />
-                                    </Col>
-                                </FormGroup>
-
-                                <FormGroup row>
-                                    <Label for="timeTo " sm={2}>Ending time</Label>
-                                    <Col sm={5}>
-                                        <Input type="time" name="timeTo" id="timeTo"  />
-                                    </Col>
-                                </FormGroup>
-
-                                <FormGroup row>
-                                    <Label for="exampleFile" sm={2}>Powerpoint</Label>
-                                    <Col sm={10}>
-                                        <Input type="file" name="file" id="exampleFile" />
-                                        <FormText color="muted">
-                                            This is some placeholder block-level help text for the above input.
-                                            It's a bit lighter and easily wraps to a new line.
-                                        </FormText>
-                                    </Col>
-                                </FormGroup>
-
-                                <FormGroup row>
-                                    <Label for="exampleText" sm={2}>Description</Label>
-                                    <Col sm={10}>
-                                        <Input type="textare" name="workshopDescription" id="workshopDescription" />
-                                    </Col>
-                                </FormGroup>
-
-                                <FormGroup check row>
-                                    <Col sm={{ size: 10, offset: 2 }}>
-                                        <Button>Submit</Button>
-                                    </Col>
-                                </FormGroup>
-
+                                <br/>
 
                             </Form>
+
+                            <Col sm={10}>
+                                <StripeCheckout/>
+                            </Col>
                         </CardBody>
                     </Card>
                 </Container>
@@ -193,4 +137,4 @@ class RegPresenter extends Component {
     }
 }
 
-export default RegPresenter;
+export default RegAttendee;

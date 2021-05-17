@@ -1,5 +1,6 @@
 import React,{useState}  from 'react'
 import StripeCheck from 'react-stripe-checkout'
+import {Button} from "reactstrap";
 
 function StripeCheckout() {
     const [payment, setProduct] = useState({
@@ -31,7 +32,9 @@ function StripeCheckout() {
 
     return (
         <div>
-            <StripeCheck stripeKey="pk_test_51IrxfTFhAO44cnt8nAExPGNMnBw0OmdQdAPkYcYgGJ6afQBOqazAAA7suuye8KOBDcFWvynVEJ9jhWHMrggupvrY00Wt23rhk7" token={makePayment} name="Buy react"/>
+            <StripeCheck stripeKey="pk_test_51IrxfTFhAO44cnt8nAExPGNMnBw0OmdQdAPkYcYgGJ6afQBOqazAAA7suuye8KOBDcFWvynVEJ9jhWHMrggupvrY00Wt23rhk7" token={makePayment} name="Buy react">
+                <Button> Pay The Registration Fee</Button>
+            </StripeCheck>
         </div>
     )
 }

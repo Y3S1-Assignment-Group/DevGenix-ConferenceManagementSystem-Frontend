@@ -2,14 +2,7 @@ import React, {Component} from 'react';
 import { Container,Card,CardBody,Col, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import Navbar from "../../common/Navbar/Navbar";
 
-class RegPresenter extends Component {
-
-    constructor(props) {
-        super(props);
-    }
-
-
-
+class RegRearseacher extends Component {
     render() {
         return (
             <div>
@@ -126,36 +119,15 @@ class RegPresenter extends Component {
                         <CardBody className="p-5">
                             <Form>
                                 <FormGroup row>
-                                    <Label for="WorkshopName" sm={2}>Workshop Name</Label>
+                                    <Label for="PaperTitle" sm={2}>Paper Title</Label>
                                     <Col sm={5}>
-                                        <Input type="text" name="workshopName" id="workshopName" placeholder="Enter workshop name" />
+                                        <Input type="text" name="paperTitle" id="paperTitle" placeholder="Enter the paper title" />
                                     </Col>
                                 </FormGroup>
 
 
                                 <FormGroup row>
-                                    <Label for="Last Name " sm={2}>Date</Label>
-                                    <Col sm={5}>
-                                        <Input type="date" name="lastName" id="lastName" placeholder="Enter last name" />
-                                    </Col>
-                                </FormGroup>
-
-                                <FormGroup row>
-                                    <Label for="timeFrom " sm={2}>Starting time</Label>
-                                    <Col sm={5}>
-                                        <Input type="time" name="timeFrom" id="timeFrom"  />
-                                    </Col>
-                                </FormGroup>
-
-                                <FormGroup row>
-                                    <Label for="timeTo " sm={2}>Ending time</Label>
-                                    <Col sm={5}>
-                                        <Input type="time" name="timeTo" id="timeTo"  />
-                                    </Col>
-                                </FormGroup>
-
-                                <FormGroup row>
-                                    <Label for="exampleFile" sm={2}>Powerpoint</Label>
+                                    <Label for="exampleFile" sm={2}>Wordfile</Label>
                                     <Col sm={10}>
                                         <Input type="file" name="file" id="exampleFile" />
                                         <FormText color="muted">
@@ -193,4 +165,4 @@ class RegPresenter extends Component {
     }
 }
 
-export default RegPresenter;
+export default RegRearseacher;
