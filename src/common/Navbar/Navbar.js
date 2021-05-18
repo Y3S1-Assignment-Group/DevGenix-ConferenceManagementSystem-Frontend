@@ -64,7 +64,7 @@ export class Navbar extends Component {
                   href="/Keynotes"
                   style={{ color: "#ffffff" }}
                 >
-                  SPEAKERS
+                  KEYNOTES
                 </a>
               </li>
             </ul>

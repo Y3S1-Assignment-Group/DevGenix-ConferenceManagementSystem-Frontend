@@ -5,6 +5,7 @@ import KeyNoteSpeakers from "../../modules/HomePageModules/KeyNoteSpeakers/KeyNo
 import LatestNews from "../../modules/HomePageModules/LatestNews/LatestNews";
 import Footer from "../../common/Footer/Footer";
 import GetInTouch from "../../modules/HomePageModules/GetInTouchSection/GetInTouch";
+import TimeLineSection from "../../modules/HomePageModules/TimeLineSection/TimeLineSection";
 
 class HomePage extends Component {
   render() {
@@ -20,6 +21,7 @@ class HomePage extends Component {
         <section id="speakers">
           <KeyNoteSpeakers />
         </section>
+        <TimeLineSection />
         <GetInTouch />
         <Footer />
       </div>
