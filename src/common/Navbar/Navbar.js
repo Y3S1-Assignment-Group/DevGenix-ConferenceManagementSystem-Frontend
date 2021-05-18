@@ -60,7 +60,7 @@ export class Navbar extends Component {
               <li className="nav-item active">
                 <a
                   className="nav-link navLinkTab js-scroll-trigger"
-                  href="#speakers"
+                  href="/Keynotes"
                   style={{ color: "#ffffff" }}
                 >
                   SPEAKERS
