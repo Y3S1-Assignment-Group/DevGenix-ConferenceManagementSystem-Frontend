@@ -21,6 +21,7 @@ export class Navbar extends Component {
             aria-controls="navbarSupportedContent"
             aria-expanded="false"
             aria-label="Toggle navigation"
+            style={{ color: "#ffffff" }}
           >
             <span className="navbar-toggler-icon"></span>
           </button>
@@ -65,6 +66,58 @@ export class Navbar extends Component {
                 >
                   SPEAKERS
                 </a>
+              </li>
+            </ul>
+            <ul className="navbar-nav mr-auto navLinkTab mr-sm-5 navLinkLeft">
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="navbarDropdown"
+                  role="button"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                  style={{ color: "#ffffff" }}
+                >
+                  LOGIN
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="#">
+                    ATTENDEE
+                  </a>
+                  <a class="dropdown-item" href="#">
+                    RESEARCHER
+                  </a>
+                  <a class="dropdown-item" href="#">
+                    PRESENTER
+                  </a>
+                </div>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="navbarDropdown"
+                  role="button"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                  style={{ color: "#ffffff" }}
+                >
+                  REGISTER
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="#">
+                    ATTENDEE
+                  </a>
+                  <a class="dropdown-item" href="#">
+                    RESEARCHER
+                  </a>
+                  <a class="dropdown-item" href="#">
+                    PRESENTER
+                  </a>
+                </div>
               </li>
             </ul>
           </div>
