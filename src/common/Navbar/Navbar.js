@@ -1,13 +1,11 @@
 import React, { Component } from "react";
 import "./Navbar.css";
-import HomeIcon from "@material-ui/icons/Home";
-import ExploreIcon from "@material-ui/icons/Explore";
 
 export class Navbar extends Component {
   render() {
     return (
       <div>
-        <nav className="navbar navbar-expand-lg">
+        <nav className="navbar navbar-expand-lg ">
           <a className="navbar-brand" href="/">
             <span
               style={{ fontSize: "30px", fontWeight: "bold", color: "#ffffff" }}
@@ -34,22 +32,38 @@ export class Navbar extends Component {
             <ul className="navbar-nav mr-auto navLinkTab">
               <li className="nav-item active">
                 <a
-                  className="nav-link navLinkTab"
+                  className="nav-link navLinkTab js-scroll-trigger"
                   href="/"
                   style={{ color: "#ffffff" }}
                 >
-                  <HomeIcon />
                   HOME
                 </a>
               </li>
               <li className="nav-item active">
                 <a
-                  className="nav-link navLinkTab"
-                  href="/explore"
+                  className="nav-link navLinkTab js-scroll-trigger"
+                  href="#about"
                   style={{ color: "#ffffff" }}
                 >
-                  <ExploreIcon />
-                  EXPLORE
+                  ABOUT
+                </a>
+              </li>
+              <li className="nav-item active">
+                <a
+                  className="nav-link navLinkTab js-scroll-trigger"
+                  href="#news"
+                  style={{ color: "#ffffff" }}
+                >
+                  NEWS
+                </a>
+              </li>
+              <li className="nav-item active">
+                <a
+                  className="nav-link navLinkTab js-scroll-trigger"
+                  href="#speakers"
+                  style={{ color: "#ffffff" }}
+                >
+                  SPEAKERS
                 </a>
               </li>
             </ul>
