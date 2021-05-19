@@ -67,6 +67,15 @@ export class Navbar extends Component {
                   KEYNOTES
                 </a>
               </li>
+              <li className="nav-item active">
+                <a
+                    className="nav-link navLinkTab js-scroll-trigger"
+                    href="/Papers"
+                    style={{ color: "#ffffff" }}
+                >
+                  PAPERS
+                </a>
+              </li>
             </ul>
             <ul className="navbar-nav mr-auto navLinkTab mr-sm-5 navLinkLeft">
               <li class="nav-item dropdown">
