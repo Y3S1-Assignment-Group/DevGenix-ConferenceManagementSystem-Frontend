@@ -69,11 +69,20 @@ export class Navbar extends Component {
               </li>
               <li className="nav-item active">
                 <a
-                    className="nav-link navLinkTab js-scroll-trigger"
-                    href="/Papers"
-                    style={{ color: "#ffffff" }}
+                  className="nav-link navLinkTab js-scroll-trigger"
+                  href="/Papers"
+                  style={{ color: "#ffffff" }}
                 >
                   PAPERS
+                </a>
+              </li>
+              <li className="nav-item active">
+                <a
+                  className="nav-link navLinkTab js-scroll-trigger"
+                  href="/templates"
+                  style={{ color: "#ffffff" }}
+                >
+                  TEMPLATES
                 </a>
               </li>
             </ul>
