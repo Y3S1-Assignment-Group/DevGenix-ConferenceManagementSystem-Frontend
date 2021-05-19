@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { Container,Card,CardBody,Col, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import Navbar from "../../common/Navbar/Navbar";
+import Footer from "../../common/Footer/Footer";
 
 class RegPresenter extends Component {
 
@@ -188,6 +189,7 @@ class RegPresenter extends Component {
                 <br/>
                 <br/>
                 <br/>
+                <Footer/>
             </div>
         );
     }

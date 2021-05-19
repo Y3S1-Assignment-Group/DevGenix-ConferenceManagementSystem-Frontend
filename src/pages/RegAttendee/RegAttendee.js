@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { Container,Card,CardBody,Col, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import Navbar from "../../common/Navbar/Navbar";
 import StripeCheckout from "../../common/StripePayment/StripeCheckout";
+import Footer from "../../common/Footer/Footer";
 
 class RegAttendee extends Component {
 
@@ -132,6 +133,7 @@ class RegAttendee extends Component {
                 <br/>
                 <br/>
                 <br/>
+                <Footer/>
             </div>
         );
     }

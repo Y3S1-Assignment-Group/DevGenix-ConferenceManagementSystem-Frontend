@@ -15,6 +15,7 @@ import AdminPresenterPage from "../pages/AdminPage/AdminPresenterPage";
 import AdminConferenceDetailsPage from "../pages/AdminPage/AdminConferenceDetailsPage";
 import ProfilePage from "../pages/ProfilePage/ProfilePage";
 import ReasearchPapersPage from "../pages/ReasearchPapersPage/ReasearchPapersPage";
+import ReviewerDashboard from "../pages/ReviewerDashboard/ReviewerDashboard";
 
 class RouteComponent extends Component {
   render() {
@@ -23,11 +24,7 @@ class RouteComponent extends Component {
         <Switch>
           <Route path="/" exact component={HomePage} />
           <Route path="/PresenterRegistration" exact component={RegPresenter} />
-          <Route
-            path="/ReasearcherRegistration"
-            exact
-            component={RegRearseacher}
-          />
+          <Route path="/ReasearcherRegistration" exact component={RegRearseacher}/>
           <Route path="/AttendeeRegistration" exact component={RegAttendee} />
           <Route path="/Keynotes" exact component={KeynoteSpeakerPage} />
           <Route path="/templates" exact component={TemplatePage} />
@@ -35,19 +32,15 @@ class RouteComponent extends Component {
           <Route path="/admineditor" exact component={AdminEditorPage} />
           <Route path="/adminreviewer" exact component={AdminReviewerPage} />
           <Route path="/adminattendee" exact component={AdminAttendeePage} />
-          <Route
-            path="/adminresearcher"
-            exact
-            component={AdminResearcherPage}
-          />
+          <Route path="/adminresearcher" exact component={AdminResearcherPage}/>
           <Route path="/adminpresenter" exact component={AdminPresenterPage} />
-          <Route
-            path="/adminconference"
-            exact
-            component={AdminConferenceDetailsPage}
-          />
+          <Route path="/adminconference" exact component={AdminConferenceDetailsPage}/>
           <Route path="/Papers" exact component={ReasearchPapersPage} />
           <Route path="/Profile" exact component={ProfilePage} />
+          <Route path="/ReviewerDashboard" exact component={ReviewerDashboard} />
+
+
+
         </Switch>
       </Router>
     );
