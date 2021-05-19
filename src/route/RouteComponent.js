@@ -7,6 +7,7 @@ import RegRearseacher from "../pages/RegReasearcher/RegRearseacher";
 import KeynoteSpeakerPage from "../pages/KeynoteSpeakerPage/KeynoteSpeakerPage";
 import ProfilePage from "../pages/ProfilePage/ProfilePage";
 import ReasearchPapersPage from "../pages/ReasearchPapersPage/ReasearchPapersPage";
+import ReviewerDashboard from "../pages/ReviewerDashboard/ReviewerDashboard";
 
 class RouteComponent extends Component {
   render() {
@@ -20,6 +21,7 @@ class RouteComponent extends Component {
           <Route path="/Keynotes" exact component={KeynoteSpeakerPage} />
           <Route path="/Papers" exact component={ReasearchPapersPage} />
           <Route path="/Profile" exact component={ProfilePage} />
+          <Route path="/ReviewerDashboard" exact component={ReviewerDashboard} />
 
 
         </Switch>

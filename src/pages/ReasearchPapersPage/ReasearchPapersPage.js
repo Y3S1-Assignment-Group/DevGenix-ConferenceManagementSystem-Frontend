@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Navbar from "../../common/Navbar/Navbar";
 import {CardColumns, Container} from "reactstrap";
 import PaperCard from "../../common/PaperCard/PaperCard";
+import Footer from "../../common/Footer/Footer";
 
 class ReasearchPapersPage extends Component {
     render() {
@@ -17,6 +18,7 @@ class ReasearchPapersPage extends Component {
                         <PaperCard/>
                     </CardColumns>
                 </Container>
+                <Footer/>
             </div>
         );
     }

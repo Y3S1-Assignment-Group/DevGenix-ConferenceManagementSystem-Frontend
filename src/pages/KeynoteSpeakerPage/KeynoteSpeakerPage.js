@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Navbar from "../../common/Navbar/Navbar";
 import KeynoteCard from "../../common/KeynoteCard/KeynoteCard";
 import {CardColumns, Container} from 'reactstrap';
+import Footer from "../../common/Footer/Footer";
 
 class KeynoteSpeakerPage extends Component {
     render() {
@@ -18,6 +19,7 @@ class KeynoteSpeakerPage extends Component {
                         <KeynoteCard/>
                     </CardColumns>
                 </Container>
+                <Footer/>
             </div>
         );
     }
