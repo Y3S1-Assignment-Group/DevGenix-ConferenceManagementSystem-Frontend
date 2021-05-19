@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from "react";
 import Navbar from "../../common/Navbar/Navbar";
 import KeynoteCard from "../../common/KeynoteCard/KeynoteCard";
 import {CardColumns, Container} from 'reactstrap';
