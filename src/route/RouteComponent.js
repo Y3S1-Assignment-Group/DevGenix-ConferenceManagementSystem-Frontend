@@ -17,6 +17,7 @@ import ProfilePage from "../pages/ProfilePage/ProfilePage";
 import ReasearchPapersPage from "../pages/ReasearchPapersPage/ReasearchPapersPage";
 import ReviewerDashboard from "../pages/ReviewerDashboard/ReviewerDashboard";
 import EditorDashboard from "../pages/EditorDashboard/EditorDashboard";
+import RegAdmin from "../pages/RegAdmin/RegAdmin";
 
 class RouteComponent extends Component {
   render() {
@@ -56,6 +57,12 @@ class RouteComponent extends Component {
             component={ReviewerDashboard}
           />
           <Route path="/editordashboard" exact component={EditorDashboard} />
+          <Route
+            path="/ReviewerDashboard"
+            exact
+            component={ReviewerDashboard}
+          />
+          <Route path="/adminlogin" exact component={RegAdmin} />
         </Switch>
       </Router>
     );
