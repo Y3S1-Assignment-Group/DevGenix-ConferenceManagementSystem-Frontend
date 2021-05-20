@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import Navbar from '../../common/Navbar/Navbar';
 import Footer from '../../common/Footer/Footer';
-import ReviewerLogin from '../../modules/ReviewerLoginModules/ReviewerLogin';
+import ResearcherLogin from '../../modules/ResearcherLoginModules/ResearcherLogin';
 
-export class ReviewerLoginPage extends Component {
+export class ResearcherLoginPage extends Component {
   render() {
     return (
       <div>
         <Navbar />
-        <ReviewerLogin />
+        <ResearcherLogin />
         <Footer />
       </div>
     );
   }
 }
 
-export default ReviewerLoginPage;
+export default ResearcherLoginPage;
