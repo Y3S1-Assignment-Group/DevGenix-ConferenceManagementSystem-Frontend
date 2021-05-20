@@ -9,6 +9,7 @@ export class AdminDashboard extends Component {
       <div className="container">
         <h3 className="text-center text-white mt-5 mb-5 display-3">
           ADMIN DASHBOARD
+          <hr />
         </h3>
         <div className="row">
           <div className="col-lg-4 col-md-4 col-sm-12">
