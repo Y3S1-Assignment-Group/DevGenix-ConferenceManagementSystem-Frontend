@@ -126,13 +126,13 @@ export class Navbar extends Component {
                   REGISTER
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="#">
+                  <a class="dropdown-item" href="/AttendeeRegistration">
                     ATTENDEE
                   </a>
-                  <a class="dropdown-item" href="#">
+                  <a class="dropdown-item" href="/ReasearcherRegistration">
                     RESEARCHER
                   </a>
-                  <a class="dropdown-item" href="#">
+                  <a class="dropdown-item" href="/PresenterRegistration">
                     PRESENTER
                   </a>
                 </div>
