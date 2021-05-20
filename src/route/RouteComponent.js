@@ -16,6 +16,7 @@ import AdminConferenceDetailsPage from "../pages/AdminPage/AdminConferenceDetail
 import ProfilePage from "../pages/ProfilePage/ProfilePage";
 import ReasearchPapersPage from "../pages/ReasearchPapersPage/ReasearchPapersPage";
 import ReviewerDashboard from "../pages/ReviewerDashboard/ReviewerDashboard";
+import RegAdmin from "../pages/RegAdmin/RegAdmin";
 
 class RouteComponent extends Component {
   render() {
@@ -38,7 +39,7 @@ class RouteComponent extends Component {
           <Route path="/Papers" exact component={ReasearchPapersPage} />
           <Route path="/Profile" exact component={ProfilePage} />
           <Route path="/ReviewerDashboard" exact component={ReviewerDashboard} />
-
+          <Route path="/adminlogin" exact component={RegAdmin} />
 
 
         </Switch>
