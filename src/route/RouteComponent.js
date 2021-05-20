@@ -18,6 +18,7 @@ import ReasearchPapersPage from "../pages/ReasearchPapersPage/ReasearchPapersPag
 import ReviewerDashboard from "../pages/ReviewerDashboard/ReviewerDashboard";
 import EditorDashboard from "../pages/EditorDashboard/EditorDashboard";
 import RegAdmin from "../pages/RegAdmin/RegAdmin";
+import AdminLoginPage from "../pages/AdminLoginPage/AdminLoginPage";
 
 class RouteComponent extends Component {
   render() {
@@ -62,7 +63,8 @@ class RouteComponent extends Component {
             exact
             component={ReviewerDashboard}
           />
-          <Route path="/adminlogin" exact component={RegAdmin} />
+          <Route path="/adminreg" exact component={RegAdmin} />
+          <Route path="/adminlogin" exact component={AdminLoginPage} />
         </Switch>
       </Router>
     );
