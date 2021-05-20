@@ -21,6 +21,7 @@ import RegAdmin from '../pages/RegAdmin/RegAdmin';
 import AdminLoginPage from '../pages/AdminLoginPage/AdminLoginPage';
 import ReviewerLoginPage from '../pages/ReviewerLoginPage/ReviewerLoginPage';
 import ResearcherLoginPage from '../pages/ResearcherLoginPage/ResearcherLoginPage';
+import PresenterLoginPage from '../pages/PresenterLoginPage/PresenterLoginPage';
 
 class RouteComponent extends Component {
   render() {
@@ -73,6 +74,7 @@ class RouteComponent extends Component {
             exact
             component={ResearcherLoginPage}
           />
+          <Route path='/presenterlogin' exact component={PresenterLoginPage} />
         </Switch>
       </Router>
     );
