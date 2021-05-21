@@ -64,10 +64,6 @@ class CreateEditor extends Component {
         this.setState({
           processStatusAlert: "alert alert-danger",
           processStatusMessage: "Something went wrong. Please try again.",
-          firstName: "",
-          lastName: "",
-          email: "",
-          password: "",
         });
       }
     );
