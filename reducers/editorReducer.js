@@ -13,6 +13,11 @@ export const editorReducer = (state = initialState, action) => {
         editorList: [...action.payload],
         itemListPending: false,
       };
+    case ACTION_TYPES.ADD_EDITOR:
+      return {
+        ...state,
+        editorList: [...state.editorList, action.payload],
+      };
     default:
       return state;
   }
