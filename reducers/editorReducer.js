@@ -11,7 +11,7 @@ export const editorReducer = (state = initialState, action) => {
       return {
         ...state,
         editorList: [...action.payload],
-        itemListPending: false,
+        editorListPending: false,
       };
     case ACTION_TYPES.ADD_EDITOR:
       return {

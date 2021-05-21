@@ -7,6 +7,7 @@ const authReviewerApi = {
         return {
             register: (newReviewer) => axios.post(baseUrl + "/api/authReviewer/register", newReviewer),
             login: (loginReviewer) => axios.post(baseUrl + "/api/authReviewer", loginReviewer),
+            getAllEditors: () => axios.get(baseUrl + "/api/authReviewer/all")
         };
     },
 };
