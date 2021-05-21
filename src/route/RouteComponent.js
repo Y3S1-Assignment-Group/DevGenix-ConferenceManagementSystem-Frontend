@@ -75,6 +75,7 @@ class RouteComponent extends Component {
             component={ResearcherLoginPage}
           />
           <Route path='/presenterlogin' exact component={PresenterLoginPage} />
+          <Route path='/attendeelogin' exact component={AttendeeLoginPage} />
         </Switch>
       </Router>
     );
