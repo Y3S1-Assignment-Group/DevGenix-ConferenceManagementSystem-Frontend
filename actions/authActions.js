@@ -1,4 +1,5 @@
 import adminApi from "../apis/AdminAPI";
+import editorApi from "../apis/EditorAPI";
 
 export const ACTION_TYPES = {
   REGISTER_SUCCESS: "REGISTER_SUCCESS",
@@ -38,6 +39,63 @@ export const adminRegister = (data, OnSuccess, OnFailure) => (dispatch) => {
 
 export const loginAdmin = (data, OnSuccess, OnFailure) => (dispatch) => {
   adminApi
+    .auth()
+    .login(data)
+    .then((response) => {
+      const user = {
+        email: data.email,
+        token: response.data.token,
+      };
+      console.log(user);
+      dispatch({
+        type: ACTION_TYPES.LOGIN_SUCCESS,
+        payload: user,
+      });
+
+      if (response.data.token) {
+        localStorage.setItem("user", JSON.stringify(user));
+      }
+      OnSuccess();
+    })
+    .catch(() => {
+      dispatch({
+        type: ACTION_TYPES.LOGIN_FAIL,
+        payload: null,
+      });
+      OnFailure();
+    });
+};
+
+export const editorRegister = (data, OnSuccess, OnFailure) => (dispatch) => {
+  editorApi
+    .auth()
+    .register(data)
+    .then((response) => {
+      const user = {
+        email: data.email,
+        token: response.data.token,
+      };
+      dispatch({
+        type: ACTION_TYPES.REGISTER_SUCCESS,
+        payload: user,
+      });
+
+      if (response.data.token) {
+        localStorage.setItem("user", JSON.stringify(user));
+      }
+      OnSuccess();
+    })
+    .catch(() => {
+      dispatch({
+        type: ACTION_TYPES.REGISTER_FAIL,
+        payload: null,
+      });
+      OnFailure();
+    });
+};
+
+export const editorLogin = (data, OnSuccess, OnFailure) => (dispatch) => {
+  editorApi
     .auth()
     .login(data)
     .then((response) => {
