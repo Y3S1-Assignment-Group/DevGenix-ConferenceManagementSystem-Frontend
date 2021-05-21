@@ -1,17 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actions from "../../../actions/authActions";
-import {
-  Container,
-  Card,
-  CardBody,
-  Col,
-  Form,
-  FormGroup,
-  Label,
-  Input,
-  Button,
-} from "reactstrap";
+import {Container, Card, CardBody, Col, Form, FormGroup, Label, Input, Button,} from "reactstrap";
 import Navbar from "../../common/Navbar/Navbar";
 import Footer from "../../common/Footer/Footer";
 import regImg from "url:../../assets/regImg.svg";
