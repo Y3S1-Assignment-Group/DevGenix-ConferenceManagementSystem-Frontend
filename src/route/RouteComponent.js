@@ -22,6 +22,8 @@ import AdminLoginPage from '../pages/AdminLoginPage/AdminLoginPage';
 import ReviewerLoginPage from '../pages/ReviewerLoginPage/ReviewerLoginPage';
 import ResearcherLoginPage from '../pages/ResearcherLoginPage/ResearcherLoginPage';
 import PresenterLoginPage from '../pages/PresenterLoginPage/PresenterLoginPage';
+import AttendeeLoginPage from "../pages/AttendeeLoginPage/AttendeeLoginPage";
+import EditorLoginPage from "../pages/EditorLoginPage/EditorLoginPage";
 
 class RouteComponent extends Component {
   render() {
@@ -75,6 +77,8 @@ class RouteComponent extends Component {
             component={ResearcherLoginPage}
           />
           <Route path='/presenterlogin' exact component={PresenterLoginPage} />
+          <Route path='/attendeelogin' exact component={AttendeeLoginPage} />
+          <Route path='/editorlogin' exact component={EditorLoginPage} />
         </Switch>
       </Router>
     );
