@@ -1,138 +1,138 @@
-import React, { Component } from 'react';
-import './Navbar.css';
+import React, { Component } from "react";
+import "./Navbar.css";
 
 export class Navbar extends Component {
   render() {
     return (
       <div>
-        <nav className='navbar navbar-expand-lg '>
-          <a className='navbar-brand' href='/'>
+        <nav className="navbar navbar-expand-lg ">
+          <a className="navbar-brand" href="/">
             <span
-              style={{ fontSize: '30px', fontWeight: 'bold', color: '#ffffff' }}
+              style={{ fontSize: "30px", fontWeight: "bold", color: "#ffffff" }}
             >
-              ICAF<span style={{ color: '#ffb10a' }}>2021</span>
+              ICAF<span style={{ color: "#ffb10a" }}>2021</span>
             </span>
           </a>
           <button
-            className='navbar-toggler'
-            type='button'
-            data-toggle='collapse'
-            data-target='#navbarSupportedContent'
-            aria-controls='navbarSupportedContent'
-            aria-expanded='false'
-            aria-label='Toggle navigation'
-            style={{ color: '#ffffff' }}
+            className="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+            style={{ color: "#ffffff" }}
           >
-            <span className='navbar-toggler-icon'></span>
+            <span className="navbar-toggler-icon"></span>
           </button>
 
           <div
-            className='collapse navbar-collapse navLinkTab'
-            id='navbarSupportedContent'
+            className="collapse navbar-collapse navLinkTab"
+            id="navbarSupportedContent"
           >
-            <ul className='navbar-nav mr-auto navLinkTab'>
-              <li className='nav-item active'>
+            <ul className="navbar-nav mr-auto navLinkTab">
+              <li className="nav-item active">
                 <a
-                  className='nav-link navLinkTab js-scroll-trigger'
-                  href='/'
-                  style={{ color: '#ffffff' }}
+                  className="nav-link navLinkTab js-scroll-trigger"
+                  href="/"
+                  style={{ color: "#ffffff" }}
                 >
                   HOME
                 </a>
               </li>
-              <li className='nav-item active'>
+              <li className="nav-item active">
                 <a
-                  className='nav-link navLinkTab js-scroll-trigger'
-                  href='#about'
-                  style={{ color: '#ffffff' }}
+                  className="nav-link navLinkTab js-scroll-trigger"
+                  href="#about"
+                  style={{ color: "#ffffff" }}
                 >
                   ABOUT
                 </a>
               </li>
-              <li className='nav-item active'>
+              <li className="nav-item active">
                 <a
-                  className='nav-link navLinkTab js-scroll-trigger'
-                  href='#news'
-                  style={{ color: '#ffffff' }}
+                  className="nav-link navLinkTab js-scroll-trigger"
+                  href="#news"
+                  style={{ color: "#ffffff" }}
                 >
                   NEWS
                 </a>
               </li>
-              <li className='nav-item active'>
+              <li className="nav-item active">
                 <a
-                  className='nav-link navLinkTab js-scroll-trigger'
-                  href='/Keynotes'
-                  style={{ color: '#ffffff' }}
+                  className="nav-link navLinkTab js-scroll-trigger"
+                  href="/Keynotes"
+                  style={{ color: "#ffffff" }}
                 >
                   KEYNOTES
                 </a>
               </li>
-              <li className='nav-item active'>
+              <li className="nav-item active">
                 <a
-                  className='nav-link navLinkTab js-scroll-trigger'
-                  href='/Papers'
-                  style={{ color: '#ffffff' }}
+                  className="nav-link navLinkTab js-scroll-trigger"
+                  href="/Papers"
+                  style={{ color: "#ffffff" }}
                 >
                   PAPERS
                 </a>
               </li>
-              <li className='nav-item active'>
+              <li className="nav-item active">
                 <a
-                  className='nav-link navLinkTab js-scroll-trigger'
-                  href='/templates'
-                  style={{ color: '#ffffff' }}
+                  className="nav-link navLinkTab js-scroll-trigger"
+                  href="/templates"
+                  style={{ color: "#ffffff" }}
                 >
                   TEMPLATES
                 </a>
               </li>
             </ul>
-            <ul className='navbar-nav mr-auto navLinkTab mr-sm-5 navLinkLeft'>
-              <li class='nav-item dropdown'>
+            <ul className="navbar-nav mr-auto navLinkTab mr-sm-5 navLinkLeft">
+              <li class="nav-item dropdown">
                 <a
-                  class='nav-link dropdown-toggle'
-                  href='#'
-                  id='navbarDropdown'
-                  role='button'
-                  data-toggle='dropdown'
-                  aria-haspopup='true'
-                  aria-expanded='false'
-                  style={{ color: '#ffffff' }}
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="navbarDropdown"
+                  role="button"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                  style={{ color: "#ffffff" }}
                 >
                   LOGIN
                 </a>
-                <div class='dropdown-menu' aria-labelledby='navbarDropdown'>
-                  <a class='dropdown-item' href='#'>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/attendeelogin">
                     ATTENDEE
                   </a>
-                  <a class='dropdown-item' href='/researcherlogin'>
+                  <a class="dropdown-item" href="/researcherlogin">
                     RESEARCHER
                   </a>
-                  <a class='dropdown-item' href='/presenterlogin'>
+                  <a class="dropdown-item" href="/presenterlogin">
                     PRESENTER
                   </a>
                 </div>
               </li>
-              <li class='nav-item dropdown'>
+              <li class="nav-item dropdown">
                 <a
-                  class='nav-link dropdown-toggle'
-                  href='#'
-                  id='navbarDropdown'
-                  role='button'
-                  data-toggle='dropdown'
-                  aria-haspopup='true'
-                  aria-expanded='false'
-                  style={{ color: '#ffffff' }}
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="navbarDropdown"
+                  role="button"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                  style={{ color: "#ffffff" }}
                 >
                   REGISTER
                 </a>
-                <div class='dropdown-menu' aria-labelledby='navbarDropdown'>
-                  <a class='dropdown-item' href='/AttendeeRegistration'>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/AttendeeRegistration">
                     ATTENDEE
                   </a>
-                  <a class='dropdown-item' href='/ReasearcherRegistration'>
+                  <a class="dropdown-item" href="/ReasearcherRegistration">
                     RESEARCHER
                   </a>
-                  <a class='dropdown-item' href='/PresenterRegistration'>
+                  <a class="dropdown-item" href="/PresenterRegistration">
                     PRESENTER
                   </a>
                 </div>
