@@ -1,5 +1,8 @@
 import adminApi from "../apis/AdminAPI";
-import reviewerApi from '../apis/ReviewerAPI';
+import editorApi from "../apis/EditorAPI";
+import reviewerApi from "../apis/ReviewerAPI";
+import EDITOR_ACTION_TYPE from "../actions/editorActions";
+
 export const ACTION_TYPES = {
   REGISTER_SUCCESS: "REGISTER_SUCCESS",
   REGISTER_FAIL: "REGISTER_FAIL",
@@ -65,62 +68,91 @@ export const loginAdmin = (data, OnSuccess, OnFailure) => (dispatch) => {
     });
 };
 
-export const ReviewerRegister = (data, OnSuccess, OnFailure) => (dispatch) => {
-    console.log(data);
-    reviewerApi
-        .auth()
-        .register(data)
-        .then((response) => {
-            const user = {
-                email: data.email,
-                token: response.data.token,
-            };
-            dispatch({
-                type: ACTION_TYPES.REGISTER_SUCCESS,
-                payload: user,
-            });
+export const editorLogin = (data, OnSuccess, OnFailure) => (dispatch) => {
+  editorApi
+    .auth()
+    .login(data)
+    .then((response) => {
+      const user = {
+        email: data.email,
+        token: response.data.token,
+      };
+      console.log(user);
+      dispatch({
+        type: ACTION_TYPES.LOGIN_SUCCESS,
+        payload: user,
+      });
 
-            if (response.data.token) {
-                localStorage.setItem("user", JSON.stringify(user));
-            }
-            OnSuccess();
-        })
-        .catch(() => {
-            dispatch({
-                type: ACTION_TYPES.REGISTER_FAIL,
-                payload: null,
-            });
-            OnFailure();
-        });
+      if (response.data.token) {
+        localStorage.setItem("user", JSON.stringify(user));
+      }
+      OnSuccess();
+    })
+    .catch(() => {
+      dispatch({
+        type: ACTION_TYPES.LOGIN_FAIL,
+        payload: null,
+      });
+      OnFailure();
+    });
+};
+
+export const ReviewerRegister = (data, OnSuccess, OnFailure) => (dispatch) => {
+  console.log(data);
+  reviewerApi
+    .auth()
+    .register(data)
+    .then((response) => {
+      const user = {
+        email: data.email,
+        token: response.data.token,
+      };
+      dispatch({
+        type: ACTION_TYPES.REGISTER_SUCCESS,
+        payload: user,
+      });
+
+      if (response.data.token) {
+        localStorage.setItem("user", JSON.stringify(user));
+      }
+      OnSuccess();
+    })
+    .catch(() => {
+      dispatch({
+        type: ACTION_TYPES.REGISTER_FAIL,
+        payload: null,
+      });
+      OnFailure();
+    });
 };
 
 export const loginReviewer = (data, OnSuccess, OnFailure) => (dispatch) => {
-    reviewerApi
-        .auth()
-        .login(data)
-        .then((response) => {
-            const user = {
-                email: data.email,
-                token: response.data.token,
-            };
-            console.log(user);
-            dispatch({
-                type: ACTION_TYPES.LOGIN_SUCCESS,
-                payload: user,
-            });
+  reviewerApi
+    .auth()
+    .login(data)
+    .then((response) => {
+      const user = {
+        email: data.email,
+        token: response.data.token,
+      };
+      console.log(user);
+      dispatch({
+        type: ACTION_TYPES.LOGIN_SUCCESS,
+        payload: user,
+      });
 
-            if (response.data.token) {
-                localStorage.setItem("user", JSON.stringify(user));
-            }
-            OnSuccess();
-        })
-        .catch(() => {
-            dispatch({
-                type: ACTION_TYPES.LOGIN_FAIL,
-                payload: null,
-            });
-            OnFailure();
-        });
+      if (response.data.token) {
+        localStorage.setItem("user", JSON.stringify(user));
+      }
+      OnSuccess();
+    })
+    .catch(() => {
+      dispatch({
+        type: ACTION_TYPES.LOGIN_FAIL,
+        payload: null,
+      });
+      OnFailure();
+    });
 };
 
 export const logout = () => (dispatch) => {
