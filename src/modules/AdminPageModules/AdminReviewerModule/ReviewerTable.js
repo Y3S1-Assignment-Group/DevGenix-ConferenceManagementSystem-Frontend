@@ -1,7 +1,12 @@
 import React, { Component } from "react";
 import { Table, Card, CardBody } from "reactstrap";
+import * as actions from "../../../../actions/reviewerActions";
+import {connect} from "react-redux";
 
 export class ReviewerTable extends Component {
+  componentDidMount() {
+    this.props.fetchAllReviewers();
+  }
   render() {
     return (
       <div>
@@ -24,72 +29,18 @@ export class ReviewerTable extends Component {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>Mark</td>
-                      <td>Otto</td>
-                      <td>@mdo</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">2</th>
-                      <td>Jacob</td>
-                      <td>Thornton</td>
-                      <td>@fat</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">3</th>
-                      <td>Larry</td>
-                      <td>the Bird</td>
-                      <td>@twitter</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">2</th>
-                      <td>Jacob</td>
-                      <td>Thornton</td>
-                      <td>@fat</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">3</th>
-                      <td>Larry</td>
-                      <td>the Bird</td>
-                      <td>@twitter</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">2</th>
-                      <td>Jacob</td>
-                      <td>Thornton</td>
-                      <td>@fat</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">3</th>
-                      <td>Larry</td>
-                      <td>the Bird</td>
-                      <td>@twitter</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">2</th>
-                      <td>Jacob</td>
-                      <td>Thornton</td>
-                      <td>@fat</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">3</th>
-                      <td>Larry</td>
-                      <td>the Bird</td>
-                      <td>@twitter</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">2</th>
-                      <td>Jacob</td>
-                      <td>Thornton</td>
-                      <td>@fat</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">3</th>
-                      <td>Larry</td>
-                      <td>the Bird</td>
-                      <td>@twitter</td>
-                    </tr>
+                  {this.props.reviewerList &&
+                    this.props.reviewerList.map((singleReviewer, index) => {
+
+                    return (
+                        <tr>
+                          <th scope="row">{index}</th>
+                          <td>{singleReviewer.firstName}</td>
+                          <td>{singleReviewer.lastName}</td>
+                          <td>{singleReviewer.email}</td>
+                        </tr>
+                    );
+                  })}
                   </tbody>
                 </Table>
               </div>
@@ -101,4 +52,12 @@ export class ReviewerTable extends Component {
   }
 }
 
-export default ReviewerTable;
+const mapStateToProps = (state) => ({
+  user: state.authReducer.user,
+  reviewerList: state.reviewerReducer.reviewerList,
+});
+
+const mapActionToProps = {
+  fetchAllReviewers: actions.fetchAllReviewers,
+};
+export default connect(mapStateToProps, mapActionToProps)(ReviewerTable);

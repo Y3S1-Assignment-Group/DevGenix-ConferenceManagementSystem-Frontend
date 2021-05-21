@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import * as actions from "../../../../actions/authActions";
+import * as actions from "../../../../actions/reviewerActions";
 
 import {Card, CardBody, Col, Button, Form, FormGroup, Label, Input,} from "reactstrap";
 
@@ -171,7 +171,7 @@ export class CreateReviewer extends Component {
 
 
 const mapActionToProps = {
-  reviewerRegister: actions.ReviewerRegister,
+  reviewerRegister: actions.reviewerRegister,
 };
 
 export default connect(null, mapActionToProps)(CreateReviewer);
