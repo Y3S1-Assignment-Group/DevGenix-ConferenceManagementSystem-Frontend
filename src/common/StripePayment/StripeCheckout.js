@@ -46,6 +46,8 @@ class StripeCheckout extends Component {
                     jobStatus: this.props.jobStatus,
                     universityOrWorkPlace: this.props.universityOrWorkPlace,
                     statementOfInterest: this.props.statementOfInterest,
+                    workshopAttends :this.props.workshops,
+                    imgLink:this.props.imgLink
 
                 };
                 console.log(registerAttendeeObj)
