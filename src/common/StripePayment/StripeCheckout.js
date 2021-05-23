@@ -56,6 +56,7 @@ class StripeCheckout extends Component {
                     registerAttendeeObj,
                     () => {
                         alert("Success");
+                        window.location = "/";
                     },
                     () => {
 
