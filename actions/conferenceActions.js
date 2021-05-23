@@ -1,27 +1,31 @@
-import conferenceDetailsApi from '../apis/ConferenceAPI';
+import conferenceDetailsApi from "../apis/ConferenceAPI";
 
 export const ACTION_TYPES = {
-  FETCH_ALL_CONFERENCE_LIST: 'FETCH_ALL_CONFERENCE_LIST',
-  APPROVED_CONFERENCE_LIST: 'APPROVED_CONFERENCE_LIST',
-  UNAPPROVED_CONFERENCE_LIST: 'UNAPPROVED_CONFERENCE_LIST',
-  ADD_CONFERENCE: 'ADD_CONFERENCE',
-  UPDATE_CONFERENCE: 'UPDATE_CONFERENCE',
-  APPROVE_CONFERENCE_ADMIN: 'APPROVE_CONFERENCE_ADMIN',
+  FETCH_ALL_CONFERENCE_LIST: "FETCH_ALL_CONFERENCE_LIST",
+  APPROVED_CONFERENCE_LIST: "APPROVED_CONFERENCE_LIST",
+  UNAPPROVED_CONFERENCE_LIST: "UNAPPROVED_CONFERENCE_LIST",
+  ADD_CONFERENCE: "ADD_CONFERENCE",
+  UPDATE_CONFERENCE: "UPDATE_CONFERENCE",
+  APPROVE_CONFERENCE_ADMIN: "APPROVE_CONFERENCE_ADMIN",
 };
 
 export const fetchAllConferenceList = () => (dispatch) => {
-  conferenceDetailsApi.conference().getAllConferenceDetails.then((response) => {
-    dispatch({
-      type: ACTION_TYPES.FETCH_ALL_CONFERENCE_LIST,
-      payload: response.data,
+  conferenceDetailsApi
+    .conference()
+    .getAllConferenceDetails()
+    .then((response) => {
+      dispatch({
+        type: ACTION_TYPES.FETCH_ALL_CONFERENCE_LIST,
+        payload: response.data,
+      });
     });
-  });
 };
 
 export const fetchAllApprovedConferenceList = () => (dispatch) => {
   conferenceDetailsApi
     .conference()
-    .getApprovedConferenceDetails.then((response) => {
+    .getApprovedConferenceDetails()
+    .then((response) => {
       dispatch({
         type: ACTION_TYPES.APPROVED_CONFERENCE_LIST,
         payload: response.data,
@@ -32,7 +36,8 @@ export const fetchAllApprovedConferenceList = () => (dispatch) => {
 export const fetchAllUnpprovedConferenceList = () => (dispatch) => {
   conferenceDetailsApi
     .conference()
-    .getUnapprovedConferenceDetails.then((response) => {
+    .getUnapprovedConferenceDetails()
+    .then((response) => {
       dispatch({
         type: ACTION_TYPES.UNAPPROVED_CONFERENCE_LIST,
         payload: response.data,
@@ -42,7 +47,6 @@ export const fetchAllUnpprovedConferenceList = () => (dispatch) => {
 
 export const addConferenceDetails =
   (data, OnSuccess, OnFailure) => (dispatch) => {
-    console.log('Test Object in Action', data);
     conferenceDetailsApi
       .conference()
       .addConferenceDetails(data)
