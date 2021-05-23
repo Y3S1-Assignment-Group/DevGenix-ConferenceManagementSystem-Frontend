@@ -39,3 +39,4 @@ export const editorRegister = (data, OnSuccess, OnFailure) => (dispatch) => {
       OnFailure();
     });
 };
+
