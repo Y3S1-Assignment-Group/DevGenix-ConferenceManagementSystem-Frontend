@@ -16,8 +16,28 @@ import StripeCheckout from "../../common/StripePayment/StripeCheckout";
 import Footer from "../../common/Footer/Footer";
 
 class RegAttendee extends Component {
+
   constructor(props) {
     super(props);
+    this.onValueChange = this.onValueChange.bind(this);
+    this.state = {
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: "",
+      processStatus: false,
+      processStatusAlert: "",
+      processStatusMessage: "",
+      contactNumber: "",
+      jobStatus: "",
+      universityOrWorkPlace: "",
+      statementOfInterest: "",
+
+    };
+  }
+
+  onValueChange(e) {
+    this.setState({ [e.target.name]: e.target.value })
   }
 
   render() {
@@ -29,6 +49,18 @@ class RegAttendee extends Component {
           <Card>
             <CardBody className="p-5">
               <Form>
+                <FormGroup>
+                  {this.state.processStatus ? (
+                    <div
+                      className={this.state.processStatusAlert}
+                      role="alert"
+                    >
+                      {this.state.processStatusMessage}
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                </FormGroup>
                 <FormGroup row>
                   <Label for="First Name" sm={2}>
                     First Name
@@ -39,6 +71,9 @@ class RegAttendee extends Component {
                       name="firstName"
                       id="firstName"
                       placeholder="Enter first name"
+                      onChange={(e) => {
+                        this.onValueChange(e);
+                      }}
                     />
                   </Col>
                 </FormGroup>
@@ -53,6 +88,9 @@ class RegAttendee extends Component {
                       name="lastName"
                       id="lastName"
                       placeholder="Enter last name"
+                      onChange={(e) => {
+                        this.onValueChange(e);
+                      }}
                     />
                   </Col>
                 </FormGroup>
@@ -64,9 +102,12 @@ class RegAttendee extends Component {
                   <Col sm={5}>
                     <Input
                       type="tel"
-                      name="telephone"
+                      name="contactNumber"
                       id="telephone"
                       placeholder="Enter the telephone number"
+                      onChange={(e) => {
+                        this.onValueChange(e);
+                      }}
                     />
                   </Col>
                 </FormGroup>
@@ -81,6 +122,9 @@ class RegAttendee extends Component {
                       name="email"
                       id="email"
                       placeholder="Enter email"
+                      onChange={(e) => {
+                        this.onValueChange(e);
+                      }}
                     />
                   </Col>
                 </FormGroup>
@@ -94,6 +138,9 @@ class RegAttendee extends Component {
                       name="password"
                       id="password"
                       placeholder="Enter password"
+                      onChange={(e) => {
+                        this.onValueChange(e);
+                      }}
                     />
                   </Col>
                 </FormGroup>
@@ -103,10 +150,12 @@ class RegAttendee extends Component {
                     Job Status
                   </Label>
                   <Col sm={10}>
-                    <Input type="select" name="jobstatus" id="jobstatus">
-                      <option>Professional</option>
-                      <option>Student</option>
-                      <option>Industry expert</option>
+                    <Input type="select" name="jobStatus" id="jobstatus" onChange={(e) => {
+                        this.onValueChange(e);
+                      }}>
+                      <option value="Professional">Professional</option>
+                      <option value="Student">Student</option>
+                      <option value="Industry expert">Industry expert</option>
                     </Input>
                   </Col>
                 </FormGroup>
@@ -132,9 +181,12 @@ class RegAttendee extends Component {
                   <Col sm={5}>
                     <Input
                       type="text"
-                      name="universityWorkplace"
+                      name="universityOrWorkPlace"
                       id="universityWorkplace"
                       placeholder="Enter the university or the workplace"
+                      onChange={(e) => {
+                        this.onValueChange(e);
+                      }}
                     />
                   </Col>
                 </FormGroup>
@@ -144,7 +196,9 @@ class RegAttendee extends Component {
                     Statement of Interests
                   </Label>
                   <Col sm={10}>
-                    <Input type="textarea" name="text" id="exampleText" />
+                    <Input type="textarea" name="statementOfInterest" id="statementOfInterest" onChange={(e) => {
+                      this.onValueChange(e);
+                    }} />
                   </Col>
                 </FormGroup>
 
@@ -171,14 +225,12 @@ class RegAttendee extends Component {
                     </FormGroup>
                   </Col>
                 </FormGroup>
-
-                <FormGroup row></FormGroup>
-
                 <br />
               </Form>
 
               <Col sm={10}>
-                <StripeCheckout />
+                <StripeCheckout role="ATTENDEE" amount="1000.00" firstName={this.state.firstName} lastName={this.state.lastName} email={this.state.email} password={this.state.password}
+                contactNumber={this.state.contactNumber} jobStatus={this.state.jobStatus} universityOrWorkPlace={this.state.universityOrWorkPlace} statementOfInterest={this.state.statementOfInterest}/>
               </Col>
             </CardBody>
           </Card>
@@ -192,5 +244,7 @@ class RegAttendee extends Component {
     );
   }
 }
+
+
 
 export default RegAttendee;

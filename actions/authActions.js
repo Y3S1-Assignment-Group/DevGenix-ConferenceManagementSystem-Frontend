@@ -2,6 +2,7 @@ import adminApi from "../apis/AdminAPI";
 import editorApi from "../apis/EditorAPI";
 import reviewerApi from "../apis/ReviewerAPI";
 import presenterApi from "../apis/PresenterAPI";
+import attendeeApi from "../apis/AttendeeAPI";
 
 export const ACTION_TYPES = {
   REGISTER_SUCCESS: "REGISTER_SUCCESS",
@@ -188,4 +189,61 @@ export const logout = () => (dispatch) => {
     type: ACTION_TYPES.LOGOUT,
   });
   window.location = "/";
+};
+
+export const attendeeRegister = (data, OnSuccess, OnFailure) => (dispatch) => {
+  attendeeApi
+    .auth()
+    .register(data)
+    .then((response) => {
+      const user = {
+        email: data.email,
+        token: response.data.token,
+      };
+      dispatch({
+        type: ACTION_TYPES.REGISTER_SUCCESS,
+        payload: user,
+      });
+
+      if (response.data.token) {
+        localStorage.setItem("user", JSON.stringify(user));
+      }
+      OnSuccess();
+    })
+    .catch(() => {
+      dispatch({
+        type: ACTION_TYPES.REGISTER_FAIL,
+        payload: null,
+      });
+      OnFailure();
+    });
+};
+
+export const loginAttendee = (data, OnSuccess, OnFailure) => (dispatch) => {
+  attendeeApi
+    .auth()
+    .login(data)
+    .then((response) => {
+      const user = {
+        email: data.email,
+        token: response.data.token,
+      };
+      console.log(user);
+      dispatch({
+        type: ACTION_TYPES.LOGIN_SUCCESS,
+        payload: user,
+      });
+
+      if (response.data.token) {
+        localStorage.setItem("user", JSON.stringify(user));
+      }
+      OnSuccess();
+    })
+    .catch(() => {
+      dispatch({
+        type: ACTION_TYPES.LOGIN_FAIL,
+        payload: null,
+      });
+      OnFailure();
+    });
 };
