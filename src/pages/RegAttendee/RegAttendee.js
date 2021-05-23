@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import { storage } from "../../firebase";
+import Progress from "../../common/ProgressBar/Progress";
+
 import {
   Container,
   Card,
@@ -14,12 +17,16 @@ import {
 import Navbar from "../../common/Navbar/Navbar";
 import StripeCheckout from "../../common/StripePayment/StripeCheckout";
 import Footer from "../../common/Footer/Footer";
+import * as actions from "../../../actions/workshopActions"
+import { connect } from "react-redux";
 
 class RegAttendee extends Component {
 
   constructor(props) {
     super(props);
+    this.handleCheckboxChange = this.handleCheckboxChange.bind(this)
     this.onValueChange = this.onValueChange.bind(this);
+    this.uploadImage = this.uploadImage.bind(this);
     this.state = {
       firstName: "",
       lastName: "",
@@ -30,11 +37,85 @@ class RegAttendee extends Component {
       processStatusMessage: "",
       contactNumber: "",
       jobStatus: "",
+      imgLink:"",
       universityOrWorkPlace: "",
       statementOfInterest: "",
+      workshops:[
+        {
+          workshopName:""
+        }
+      ],
+
+      uploadPercentage: 0,
 
     };
   }
+
+  componentDidMount() {
+    this.props.fetchAllApprovedWorkshops();
+
+  }
+
+  uploadImage(e) {
+    if (e.target.files[0] !== null) {
+      this.setState({
+        processStatus: true,
+        processStatusAlert: "alert alert-warning",
+        processStatusMessage: "Image Uploading...",
+      });
+      const uploadTask = storage
+        .ref(`attendee/${e.target.files[0].name}`)
+        .put(e.target.files[0]);
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {
+          //progress function
+          const progress = Math.round(
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+          );
+          this.setState({ uploadPercentage: progress });
+        },
+        (error) => {
+          //error function
+          console.log(error);
+        },
+        () => {
+          //complete function
+          storage
+            .ref("attendee")
+            .child(e.target.files[0].name)
+            .getDownloadURL()
+            .then((url) => {
+              console.log(url);
+              this.setState({ imgLink: url });
+              this.setState({
+                processStatusAlert: "alert alert-success",
+                processStatusMessage: "Image uploaded successfully",
+              });
+            });
+        }
+      );
+    } else {
+      this.setState({
+        processStatusAlert: "alert alert-danger",
+        processStatusMessage: "Something went wrong",
+      });
+    }
+  }
+
+  handleCheckboxChange = (event) => {
+    let singleWorkshop = {
+      workshopName:event.target.value
+    }
+    if (event.target.checked) {
+      if (!this.state.workshops.includes(singleWorkshop.workshopName)) {
+        this.setState(prevState => ({ workshops: [...prevState.workshops, singleWorkshop]}))
+      }
+    } else {
+      this.setState(prevState => ({ workshops: prevState.workshops.filter(day => day.workshopName !== singleWorkshop.workshopName) }));
+    }
+  }
+
 
   onValueChange(e) {
     this.setState({ [e.target.name]: e.target.value })
@@ -165,13 +246,38 @@ class RegAttendee extends Component {
                     Profile picture
                   </Label>
                   <Col sm={10}>
-                    <Input type="file" name="file" id="exampleFile" />
+                    <Input
+                      type="file"
+                      name="file"
+                      id="exampleFile"
+                      onChange={(e) => {
+                        this.uploadImage(e);
+                      }}
+                      required
+                    />
                     <FormText color="muted">
                       This is some placeholder block-level help text for the
                       above input. It's a bit lighter and easily wraps to a new
                       line.
                     </FormText>
                   </Col>
+                </FormGroup>
+
+                <FormGroup>
+                  {this.state.processStatus ? (
+                    <div
+                      className={this.state.processStatusAlert}
+                      role="alert"
+                    >
+                      {this.state.processStatusMessage}
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                </FormGroup>
+
+                <FormGroup row>
+                  <Progress percentage={this.state.uploadPercentage} />
                 </FormGroup>
 
                 <FormGroup row>
@@ -207,22 +313,13 @@ class RegAttendee extends Component {
                     Select if you are attending{" "}
                   </Label>
                   <Col sm={{ size: 10 }}>
-                    <FormGroup check>
-                      <Label check>
-                        <Input type="checkbox" id="checkbox2" /> Introduction to
-                        flutter
-                      </Label>
-                    </FormGroup>
-                    <FormGroup check>
-                      <Label check>
-                        <Input type="checkbox" id="checkbox2" /> Github 101
-                      </Label>
-                    </FormGroup>
-                    <FormGroup check>
-                      <Label check>
-                        <Input type="checkbox" id="checkbox2" /> React Dev tool
-                      </Label>
-                    </FormGroup>
+                    {this.props.approvedWorkshopList.map(singleWorkshop => {return(
+                                          <FormGroup check>
+                                          <Label check>
+                                            <Input type="checkbox" id={singleWorkshop.workshop.workshopName} value={singleWorkshop.workshop.workshopName} onChange={ this.handleCheckboxChange}/> {singleWorkshop.workshop.workshopName}
+                                          </Label>
+                                        </FormGroup>
+                    )})}
                   </Col>
                 </FormGroup>
                 <br />
@@ -230,7 +327,7 @@ class RegAttendee extends Component {
 
               <Col sm={10}>
                 <StripeCheckout role="ATTENDEE" amount="1000.00" firstName={this.state.firstName} lastName={this.state.lastName} email={this.state.email} password={this.state.password}
-                contactNumber={this.state.contactNumber} jobStatus={this.state.jobStatus} universityOrWorkPlace={this.state.universityOrWorkPlace} statementOfInterest={this.state.statementOfInterest}/>
+                contactNumber={this.state.contactNumber} jobStatus={this.state.jobStatus} universityOrWorkPlace={this.state.universityOrWorkPlace} statementOfInterest={this.state.statementOfInterest} workshops={this.state.workshops} imgLink={this.state.imgLink} />
               </Col>
             </CardBody>
           </Card>
@@ -245,6 +342,13 @@ class RegAttendee extends Component {
   }
 }
 
+const mapActionToProps = {
+  fetchAllApprovedWorkshops: actions.fetchAllApprovedWorkshops,
+};
 
 
-export default RegAttendee;
+const mapStateToProps = (state) => ({
+  approvedWorkshopList: state.workshopReducer.approvedWorkshopList,
+});
+
+export default connect(mapStateToProps, mapActionToProps)(RegAttendee);
