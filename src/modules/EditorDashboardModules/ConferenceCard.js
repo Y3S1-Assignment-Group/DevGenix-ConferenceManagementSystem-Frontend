@@ -29,6 +29,8 @@ export class ConferenceCard extends Component {
               className="text-center"
             >
               <CardBody>
+                <h2 className="text-white display-5">Conference Details</h2>
+                <hr style={{ color: "white" }} />
                 <CardTitle style={{ color: "white" }}>
                   <div className="row">
                     <div className="col-md-6 text-center">Title </div>
@@ -80,12 +82,6 @@ export class ConferenceCard extends Component {
                       </div>
                     </div>
                   </CardText>
-                  <Button className="bg-transparent border-0">
-                    <FaRegFilePowerpoint color="white" fontSize="1.75em" />
-                  </Button>
-                  <Button className="bg-transparent border-0">
-                    <BsCalendar color="white" fontSize="1.5em" />
-                  </Button>
                 </center>
               </CardBody>
             </Card>
