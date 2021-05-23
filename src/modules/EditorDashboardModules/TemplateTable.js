@@ -8,7 +8,12 @@ export class TemplateTable extends Component {
           <div className="row mt-5">
             <div className="col-lg-6 p-4">
               <p className="mt-2">
-                <span className="templateTitle">Presenter Template</span>
+                <span className="templateTitle">
+                  Presenter Template
+                  <button className="btn btn-sm btn-danger font-weight-bolder m-2">
+                    X
+                  </button>
+                </span>
               </p>
 
               <iframe
@@ -20,7 +25,12 @@ export class TemplateTable extends Component {
             </div>
             <div className="col-lg-6 p-4">
               <p className="mt-2">
-                <span className="templateTitle">Presenter Template</span>
+                <span className="templateTitle">
+                  Presenter Template{" "}
+                  <button className="btn btn-sm btn-danger font-weight-bolder m-2">
+                    X
+                  </button>
+                </span>
               </p>
 
               <iframe
