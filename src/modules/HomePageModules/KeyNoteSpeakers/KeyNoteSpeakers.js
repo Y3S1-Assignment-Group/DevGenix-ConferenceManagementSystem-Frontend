@@ -17,18 +17,20 @@ export class KeyNoteSpeakers extends Component {
       <Container className="mt-5">
         <h1 className="text-white text-center">KEYNOTES</h1>
         <CardColumns>
-          {this.props.approvedWorkshopList
-            .reverse()
-            .slice(0, 2)
-            .map((singleApprovedWorkshop) => {
-              return <KeynoteCard workshop={singleApprovedWorkshop} />;
-            })}
+          {this.props.approvedWorkshopList &&
+            this.props.approvedWorkshopList
+              .reverse()
+              .slice(0, 2)
+              .map((singleApprovedWorkshop) => {
+                return <KeynoteCard workshop={singleApprovedWorkshop} />;
+              })}
 
-          {this.props.approvedWorkshopList
-            .slice(2, 4)
-            .map((singleApprovedWorkshop) => {
-              return <NavigationCard workshop={singleApprovedWorkshop} />;
-            })}
+          {this.props.approvedWorkshopList &&
+            this.props.approvedWorkshopList
+              .slice(2, 4)
+              .map((singleApprovedWorkshop) => {
+                return <NavigationCard workshop={singleApprovedWorkshop} />;
+              })}
         </CardColumns>
       </Container>
     );
