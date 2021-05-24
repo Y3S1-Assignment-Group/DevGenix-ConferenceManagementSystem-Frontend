@@ -5,6 +5,8 @@ import { reviewerReducer } from "./reviewerReducer";
 import { workshopReducer } from "./workshopReducer";
 import { conferenceReducer } from "./conferenceReducer";
 import { attendeeReducer } from "./attendeeReducer";
+import { presenterReducer } from "./presenterReducer";
+import { researcherReducer } from "./researcherReducer";
 
 export const reducers = combineReducers({
   authReducer,
@@ -13,4 +15,6 @@ export const reducers = combineReducers({
   workshopReducer,
   conferenceReducer,
   attendeeReducer,
+  presenterReducer,
+  researcherReducer,
 });
