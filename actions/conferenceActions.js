@@ -81,13 +81,14 @@ export const updateConference =
 
 export const approveConferenceDetailsByAdmin =
   (id, data, OnSuccess, OnFailure) => (dispatch) => {
+    console.log(id, data);
     conferenceDetailsApi
       .conference()
       .approveConferenceDetailsByAdmin(id, data)
-      .then(() => {
+      .then((response) => {
         dispatch({
           type: ACTION_TYPES.APPROVE_CONFERENCE_ADMIN,
-          payload: { ...data },
+          payload: { ...response.data },
         });
         OnSuccess();
       })

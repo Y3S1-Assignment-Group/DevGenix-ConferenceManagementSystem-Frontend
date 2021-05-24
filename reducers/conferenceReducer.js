@@ -1,4 +1,4 @@
-import { ACTION_TYPES } from '../actions/conferenceActions';
+import { ACTION_TYPES } from "../actions/conferenceActions";
 
 const initialState = {
   conferenceList: [],
@@ -32,10 +32,9 @@ export const conferenceReducer = (state = initialState, action) => {
     case ACTION_TYPES.APPROVE_CONFERENCE_ADMIN:
       return {
         ...state,
-        approvedConferenceList: [
-          ...state.approvedConferenceList,
-          action.payload,
-        ],
+        conferenceList: state.conferenceList.map((x) =>
+          x._id === action.payload._id ? action.payload : x
+        ),
       };
     case ACTION_TYPES.UPDATE_CONFERENCE:
       return {
