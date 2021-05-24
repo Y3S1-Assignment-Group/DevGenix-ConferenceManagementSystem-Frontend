@@ -1,6 +1,11 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import * as actions from "../../../../actions/presenterActions";
 import { Table, Card, CardBody } from "reactstrap";
 export class AdminPresenter extends Component {
+  componentDidMount() {
+    this.props.fetchAllPresenters();
+  }
   render() {
     return (
       <div>
@@ -22,76 +27,38 @@ export class AdminPresenter extends Component {
                       <th>#</th>
                       <th>First Name</th>
                       <th>Last Name</th>
-                      <th>Username</th>
+                      <th>Email</th>
+                      <th>Job Status</th>
+                      <th>University/WorkPlace</th>
+                      <th>Workshop</th>
+                      <th>Approved</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>Mark</td>
-                      <td>Otto</td>
-                      <td>@mdo</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">2</th>
-                      <td>Jacob</td>
-                      <td>Thornton</td>
-                      <td>@fat</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">3</th>
-                      <td>Larry</td>
-                      <td>the Bird</td>
-                      <td>@twitter</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">2</th>
-                      <td>Jacob</td>
-                      <td>Thornton</td>
-                      <td>@fat</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">3</th>
-                      <td>Larry</td>
-                      <td>the Bird</td>
-                      <td>@twitter</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">2</th>
-                      <td>Jacob</td>
-                      <td>Thornton</td>
-                      <td>@fat</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">3</th>
-                      <td>Larry</td>
-                      <td>the Bird</td>
-                      <td>@twitter</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">2</th>
-                      <td>Jacob</td>
-                      <td>Thornton</td>
-                      <td>@fat</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">3</th>
-                      <td>Larry</td>
-                      <td>the Bird</td>
-                      <td>@twitter</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">2</th>
-                      <td>Jacob</td>
-                      <td>Thornton</td>
-                      <td>@fat</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">3</th>
-                      <td>Larry</td>
-                      <td>the Bird</td>
-                      <td>@twitter</td>
-                    </tr>
+                    {this.props.presenterList.map((singlePresenter, index) => {
+                      return (
+                        <tr>
+                          <th scope="row">{++index}</th>
+                          <td>{singlePresenter.firstName}</td>
+                          <td>{singlePresenter.lastName}</td>
+                          <td>{singlePresenter.email}</td>
+                          <td>{singlePresenter.jobStatus}</td>
+                          <td>{singlePresenter.universityOrWorkPlace}</td>
+                          <td>{singlePresenter.workshop.workshopName}</td>
+                          <td>
+                            {singlePresenter.workshop.approved ? (
+                              <button className="btn btn-success">
+                                Approved
+                              </button>
+                            ) : (
+                              <button className="btn btn-danger">
+                                Unapproved
+                              </button>
+                            )}
+                          </td>
+                        </tr>
+                      );
+                    })}
                   </tbody>
                 </Table>
               </div>
@@ -103,4 +70,11 @@ export class AdminPresenter extends Component {
   }
 }
 
-export default AdminPresenter;
+const mapStateToProps = (state) => ({
+  presenterList: state.presenterReducer.presenterList,
+});
+
+const mapActionToProps = {
+  fetchAllPresenters: actions.fetchAllPresenters,
+};
+export default connect(mapStateToProps, mapActionToProps)(AdminPresenter);
