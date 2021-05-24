@@ -1,7 +1,7 @@
-import workshopApi from '../apis/WorkshopAPI';
+import workshopApi from "../apis/WorkshopAPI";
 
 export const ACTION_TYPES = {
-  APPROVED_WORKSHOP_LIST: 'EDITOR_APPROVED_WORKSHOP_LIST',
+  GET_APPROVED_WORKSHOP_LIST: "GET_APPROVED_WORKSHOP_LIST",
 };
 
 export const fetchAllApprovedWorkshops = () => (dispatch) => {
@@ -10,7 +10,7 @@ export const fetchAllApprovedWorkshops = () => (dispatch) => {
     .getApprovedWorkshops()
     .then((response) => {
       dispatch({
-        type: ACTION_TYPES.APPROVED_WORKSHOP_LIST,
+        type: ACTION_TYPES.GET_APPROVED_WORKSHOP_LIST,
         payload: response.data,
       });
     });

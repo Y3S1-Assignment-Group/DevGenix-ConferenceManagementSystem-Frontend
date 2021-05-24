@@ -47,25 +47,13 @@ export class PendingEditorContent extends Component {
                           <td>{singleContent.description}</td>
                           <td>
                             {singleContent.approved ? (
-                              <span
-                                style={{
-                                  padding: "5px",
-                                  backgroundColor: "green",
-                                  color: "white",
-                                }}
-                              >
+                              <button className="btn btn-success">
                                 Approved
-                              </span>
+                              </button>
                             ) : (
-                              <span
-                                style={{
-                                  padding: "5px",
-                                  backgroundColor: "red",
-                                  color: "white",
-                                }}
-                              >
+                              <button className="btn btn-danger">
                                 Unpproved
-                              </span>
+                              </button>
                             )}
                           </td>
                           <td>
