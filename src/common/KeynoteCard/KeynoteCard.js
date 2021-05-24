@@ -11,22 +11,29 @@ import {
   ModalHeader,
   ModalBody,
 } from "reactstrap";
-import { FaRegFilePowerpoint } from "react-icons/fa";
+import { FaRegFilePowerpoint, FaUser, FaUniversity } from "react-icons/fa";
 import { BsCalendar } from "react-icons/bs";
 import { CgProfile } from "react-icons/cg";
 import { AiOutlineFieldTime } from "react-icons/ai";
+import { MdWork } from "react-icons/md";
 
 export class KeynoteCard extends Component {
   constructor(props) {
     super(props);
     this.toggle = this.toggle.bind(this);
+    this.toggleProfile = this.toggleProfile.bind(this);
     this.state = {
       modal: false,
+      modalProfile: false,
     };
   }
 
   toggle() {
     this.setState({ modal: !this.state.modal });
+  }
+
+  toggleProfile() {
+    this.setState({ modalProfile: !this.state.modalProfile });
   }
 
   render() {
@@ -68,7 +75,10 @@ export class KeynoteCard extends Component {
                 <BsCalendar color="white" fontSize="1.5em" />
               </Button>
 
-              <Button className="bg-transparent border-0">
+              <Button
+                className="bg-transparent border-0"
+                onClick={this.toggleProfile}
+              >
                 <CgProfile color="white" fontSize="1.7em" />
               </Button>
             </CardBody>
@@ -98,6 +108,45 @@ export class KeynoteCard extends Component {
                     {this.props.workshop.workshop.timeFrom} To{" "}
                     {this.props.workshop.workshop.timeTo}
                   </span>
+                </h6>
+              </div>
+            </ModalBody>
+          </Modal>
+        </div>
+
+        <div>
+          <Modal isOpen={this.state.modalProfile} toggle={this.toggleProfile}>
+            <ModalHeader toggle={this.toggleProfile}>
+              {" "}
+              PRESENTER DETAILS
+            </ModalHeader>
+            <ModalBody>
+              <div>
+                <div>
+                  <img
+                    src={this.props.workshop.profileImg}
+                    className="img-fluid"
+                    alt="profilePic"
+                  />
+                </div>
+                <br />
+                <h6>
+                  <FaUser fontSize="1.5em" />{" "}
+                  <span>
+                    {" "}
+                    {this.props.workshop.firstName}{" "}
+                    {" " + this.props.workshop.lastName}
+                  </span>
+                </h6>
+                <br />
+                <h6>
+                  <MdWork fontSize="1.5em" />{" "}
+                  <span> {this.props.workshop.jobStatus}</span>
+                </h6>
+                <br />
+                <h6>
+                  <FaUniversity fontSize="1.5em" />{" "}
+                  <span> {this.props.workshop.universityOrWorkPlace}</span>
                 </h6>
               </div>
             </ModalBody>
