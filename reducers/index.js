@@ -8,6 +8,7 @@ import { attendeeReducer } from "./attendeeReducer";
 import { templateReducer } from "./templateReducer";
 import { presenterReducer } from "./presenterReducer";
 import { researcherReducer } from "./researcherReducer";
+import {reasearchpaperReducer} from "./reasearchpaperReducar";
 
 export const reducers = combineReducers({
   authReducer,
@@ -19,4 +20,5 @@ export const reducers = combineReducers({
   templateReducer,
   presenterReducer,
   researcherReducer,
+  reasearchpaperReducer,
 });
