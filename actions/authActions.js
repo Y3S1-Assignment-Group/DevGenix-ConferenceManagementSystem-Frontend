@@ -3,6 +3,7 @@ import editorApi from "../apis/EditorAPI";
 import reviewerApi from "../apis/ReviewerAPI";
 import presenterApi from "../apis/PresenterAPI";
 import attendeeApi from "../apis/AttendeeAPI";
+import reasearcherApi from "../apis/ReasearcherAPI";
 
 export const ACTION_TYPES = {
   REGISTER_SUCCESS: "REGISTER_SUCCESS",
@@ -181,6 +182,62 @@ export const presenterLogin = (data, OnSuccess, OnFailure) => (dispatch) => {
       });
       OnFailure();
     });
+};
+
+export const ReasearcherRegister = (data, OnSuccess, OnFailure) => (dispatch) => {
+    reasearcherApi
+        .auth()
+        .register(data)
+        .then((response) => {
+            const user = {
+                email: data.email,
+                token: response.data.token,
+            };
+            dispatch({
+                type: ACTION_TYPES.REGISTER_SUCCESS,
+                payload: user,
+            });
+
+            if (response.data.token) {
+                localStorage.setItem("user", JSON.stringify(user));
+            }
+            OnSuccess();
+        })
+        .catch(() => {
+            dispatch({
+                type: ACTION_TYPES.REGISTER_FAIL,
+                payload: null,
+            });
+            OnFailure();
+        });
+};
+
+export const ReasearcherLogin = (data, OnSuccess, OnFailure) => (dispatch) => {
+    reasearcherApi
+        .auth()
+        .login(data)
+        .then((response) => {
+            const user = {
+                email: data.email,
+                token: response.data.token,
+            };
+            dispatch({
+                type: ACTION_TYPES.LOGIN_SUCCESS,
+                payload: user,
+            });
+
+            if (response.data.token) {
+                localStorage.setItem("user", JSON.stringify(user));
+            }
+            OnSuccess();
+        })
+        .catch(() => {
+            dispatch({
+                type: ACTION_TYPES.LOGIN_FAIL,
+                payload: null,
+            });
+            OnFailure();
+        });
 };
 
 export const logout = () => (dispatch) => {
