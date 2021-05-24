@@ -11,8 +11,60 @@ import {
   Button,
 } from 'reactstrap';
 import regImg from 'url:../../assets/regImg.svg';
+import * as actions from "../../../actions/authActions";
+import {connect} from "react-redux";
 
 export class ResearcherLogin extends Component {
+  constructor(props) {
+    super(props);
+    this.onLogin = this.onLogin.bind(this);
+    this.onValueChange = this.onValueChange.bind(this);
+    this.state = {
+      email: "",
+      password: "",
+      processStatus: false,
+      processStatusAlert: "",
+      processStatusMessage: "",
+    };
+  }
+
+  onValueChange(e) {
+    this.setState({ [e.target.name]: e.target.value });
+  }
+
+  onLogin(e) {
+    e.preventDefault();
+
+    this.setState({
+      processStatus: true,
+      processStatusAlert: "alert alert-warning",
+      processStatusMessage: "Please Wait...",
+    });
+
+    const loginReasearcherObj = {
+      email: this.state.email,
+      password: this.state.password,
+    };
+
+    this.props.ReasearcherLogin(
+        loginReasearcherObj,
+        () => {
+          this.setState({
+            processStatusAlert: "alert alert-success",
+            processStatusMessage: "Login successful",
+          });
+          window.location = "/";
+        },
+        () => {
+          this.setState({
+            processStatusAlert: "alert alert-danger",
+            processStatusMessage:
+                "Username or password incorrect. Please try again.",
+          });
+        }
+    );
+  }
+
   render() {
     return (
       <div>
@@ -28,7 +80,19 @@ export class ResearcherLogin extends Component {
                     RESEACHER LOGIN
                   </h3>
                   <hr />
-                  <Form>
+                  <Form onSubmit={this.onLogin}>
+                    <FormGroup>
+                      {this.state.processStatus ? (
+                          <div
+                              className={this.state.processStatusAlert}
+                              role="alert"
+                          >
+                            {this.state.processStatusMessage}
+                          </div>
+                      ) : (
+                          ""
+                      )}
+                    </FormGroup>
                     <FormGroup row>
                       <Label for='email' sm={12}>
                         Email
@@ -39,6 +103,9 @@ export class ResearcherLogin extends Component {
                           name='email'
                           id='email'
                           placeholder='Enter email'
+                          onChange={(e) => {
+                            this.onValueChange(e);
+                          }}
                         />
                       </Col>
                     </FormGroup>
@@ -52,13 +119,16 @@ export class ResearcherLogin extends Component {
                           name='password'
                           id='password'
                           placeholder='Enter password'
+                          onChange={(e) => {
+                            this.onValueChange(e);
+                          }}
                         />
                       </Col>
                     </FormGroup>
 
                     <FormGroup row>
                       <Col sm={12}>
-                        <Button className='btn btn-warning'>Submit</Button>
+                        <Button className='btn btn-warning' type="submit">Submit</Button>
                       </Col>
                     </FormGroup>
                   </Form>
@@ -72,4 +142,8 @@ export class ResearcherLogin extends Component {
   }
 }
 
-export default ResearcherLogin;
+const mapActionToProps = {
+  ReasearcherLogin: actions.ReasearcherLogin,
+};
+
+export default connect(null, mapActionToProps)(ResearcherLogin);
