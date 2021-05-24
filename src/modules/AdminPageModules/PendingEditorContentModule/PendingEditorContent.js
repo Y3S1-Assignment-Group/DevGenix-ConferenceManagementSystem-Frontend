@@ -1,7 +1,17 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import * as actions from "../../../../actions/conferenceActions";
 import { Table, Card, CardBody, Button } from "reactstrap";
 import { AiTwotoneLike, AiTwotoneDislike } from "react-icons/ai";
 export class PendingEditorContent extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  componentDidMount() {
+    this.props.fetchAllConferenceList();
+  }
+
   render() {
     return (
       <div>
@@ -21,127 +31,80 @@ export class PendingEditorContent extends Component {
                   <thead>
                     <tr>
                       <th>#</th>
-                      <th>First Name</th>
-                      <th>Last Name</th>
-                      <th>Username</th>
-                      <th>Approve</th>
+                      <th>Conference Title</th>
+                      <th>Description</th>
+                      <th>Status</th>
+                      <th>Approved</th>
                       <th>Decline</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>Mark</td>
-                      <td>Otto</td>
-                      <td>@mdo</td>
-                      <td>
-                        <Button className="bg-transparent border-0">
-                          <AiTwotoneLike color="green" fontSize="1.7em" />
-                        </Button>
-                      </td>
-                      <td>
-                        <Button className="bg-transparent border-0">
-                          <AiTwotoneDislike color="red" fontSize="1.7em" />
-                        </Button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>Mark</td>
-                      <td>Otto</td>
-                      <td>@mdo</td>
-                      <td>
-                        <Button className="bg-transparent border-0">
-                          <AiTwotoneLike color="green" fontSize="1.7em" />
-                        </Button>
-                      </td>
-                      <td>
-                        <Button className="bg-transparent border-0">
-                          <AiTwotoneDislike color="red" fontSize="1.7em" />
-                        </Button>
-                      </td>
-                    </tr>
-
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>Mark</td>
-                      <td>Otto</td>
-                      <td>@mdo</td>
-                      <td>
-                        <Button className="bg-transparent border-0">
-                          <AiTwotoneLike color="green" fontSize="1.7em" />
-                        </Button>
-                      </td>
-                      <td>
-                        <Button className="bg-transparent border-0">
-                          <AiTwotoneDislike color="red" fontSize="1.7em" />
-                        </Button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>Mark</td>
-                      <td>Otto</td>
-                      <td>@mdo</td>
-                      <td>
-                        <Button className="bg-transparent border-0">
-                          <AiTwotoneLike color="green" fontSize="1.7em" />
-                        </Button>
-                      </td>
-                      <td>
-                        <Button className="bg-transparent border-0">
-                          <AiTwotoneDislike color="red" fontSize="1.7em" />
-                        </Button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>Mark</td>
-                      <td>Otto</td>
-                      <td>@mdo</td>
-                      <td>
-                        <Button className="bg-transparent border-0">
-                          <AiTwotoneLike color="green" fontSize="1.7em" />
-                        </Button>
-                      </td>
-                      <td>
-                        <Button className="bg-transparent border-0">
-                          <AiTwotoneDislike color="red" fontSize="1.7em" />
-                        </Button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>Mark</td>
-                      <td>Otto</td>
-                      <td>@mdo</td>
-                      <td>
-                        <Button className="bg-transparent border-0">
-                          <AiTwotoneLike color="green" fontSize="1.7em" />
-                        </Button>
-                      </td>
-                      <td>
-                        <Button className="bg-transparent border-0">
-                          <AiTwotoneDislike color="red" fontSize="1.7em" />
-                        </Button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>Mark</td>
-                      <td>Otto</td>
-                      <td>@mdo</td>
-                      <td>
-                        <Button className="bg-transparent border-0">
-                          <AiTwotoneLike color="green" fontSize="1.7em" />
-                        </Button>
-                      </td>
-                      <td>
-                        <Button className="bg-transparent border-0">
-                          <AiTwotoneDislike color="red" fontSize="1.7em" />
-                        </Button>
-                      </td>
-                    </tr>
+                    {this.props.conferenceList.map((singleContent, index) => {
+                      return (
+                        <tr>
+                          <th scope="row">{++index}</th>
+                          <td>{singleContent.confTitle}</td>
+                          <td>{singleContent.description}</td>
+                          <td>
+                            {singleContent.approved ? (
+                              <span
+                                style={{
+                                  padding: "5px",
+                                  backgroundColor: "green",
+                                  color: "white",
+                                }}
+                              >
+                                Approved
+                              </span>
+                            ) : (
+                              <span
+                                style={{
+                                  padding: "5px",
+                                  backgroundColor: "red",
+                                  color: "white",
+                                }}
+                              >
+                                Unpproved
+                              </span>
+                            )}
+                          </td>
+                          <td>
+                            <Button
+                              className="bg-transparent border-0"
+                              disabled={singleContent.approved}
+                              onClick={() => {
+                                const DataObj = {
+                                  approved: true,
+                                };
+                                this.props.approveConferenceDetailsByAdmin(
+                                  singleContent._id,
+                                  DataObj
+                                );
+                              }}
+                            >
+                              <AiTwotoneLike color="green" fontSize="1.7em" />
+                            </Button>
+                          </td>
+                          <td>
+                            <Button
+                              className="bg-transparent border-0"
+                              disabled={!singleContent.approved}
+                              onClick={() => {
+                                const DataObj = {
+                                  approved: false,
+                                };
+                                this.props.approveConferenceDetailsByAdmin(
+                                  singleContent._id,
+                                  DataObj
+                                );
+                              }}
+                            >
+                              <AiTwotoneDislike color="red" fontSize="1.7em" />
+                            </Button>
+                          </td>
+                        </tr>
+                      );
+                    })}
                   </tbody>
                 </Table>
               </div>
@@ -153,4 +116,12 @@ export class PendingEditorContent extends Component {
   }
 }
 
-export default PendingEditorContent;
+const mapStateToProps = (state) => ({
+  conferenceList: state.conferenceReducer.conferenceList,
+});
+
+const mapActionToProps = {
+  fetchAllConferenceList: actions.fetchAllConferenceList,
+  approveConferenceDetailsByAdmin: actions.approveConferenceDetailsByAdmin,
+};
+export default connect(mapStateToProps, mapActionToProps)(PendingEditorContent);

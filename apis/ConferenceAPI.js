@@ -21,7 +21,6 @@ const ConferenceDetailsApi = {
         axios.put(
           baseUrl + "/api/conference/approveconference/" + id,
           approveConference,
-
           config
         ),
       updateConferenceDetailsByEditor: (id, updateConference) =>
