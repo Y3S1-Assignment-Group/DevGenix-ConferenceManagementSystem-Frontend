@@ -1,4 +1,4 @@
-import { ACTION_TYPES } from "../actions/editorActions";
+import { ACTION_TYPES } from "../actions/templateActions";
 
 const initialState = {
     templates: [],
@@ -9,7 +9,12 @@ export const templateReducer = (state = initialState, action) => {
       case ACTION_TYPES.ADD_TEMPLATE:
         return {
           ...state,
-          templates: [...action.payload],
+          templates: [...state.templates, action.payload],
+        };
+      case ACTION_TYPES.GET_ALL_TEMPLATES:
+          return {
+            ...state,
+            templates: [...action.payload],
         };
       default:
         return state;

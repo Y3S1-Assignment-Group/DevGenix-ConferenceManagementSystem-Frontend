@@ -44,9 +44,9 @@ export class AddTemplates extends Component {
   uploadFile(e) {
     if (e.target.files[0] !== null) {
       this.setState({
-        fileProcessStatus: true,
-        fileProcessStatusAlert: "alert alert-warning",
-        fileProcessStatusMessage: "File Uploading...",
+        processStatus: true,
+        processStatusAlert: "alert alert-warning",
+        processStatusMessage: "File Uploading...",
       });
       const uploadTask = storage
         .ref(`templatefiles/${e.target.files[0].name}`)
@@ -74,16 +74,16 @@ export class AddTemplates extends Component {
               console.log(url);
               this.setState({ fileLink: url });
               this.setState({
-                fileProcessStatusAlert: "alert alert-success",
-                fileProcessStatusMessage: "File uploaded successfully",
+                processStatusAlert: "alert alert-success",
+                processStatusMessage: "File uploaded successfully",
               });
             });
         }
       );
     } else {
       this.setState({
-        fileProcessStatusAlert: "alert alert-danger",
-        fileProcessStatusMessage: "Something went wrong",
+        processStatusAlert: "alert alert-danger",
+        processStatusMessage: "Something went wrong",
       });
     }
   }
@@ -92,9 +92,9 @@ export class AddTemplates extends Component {
     e.preventDefault();
 
     this.setState({
-      processStatus: false,
-      processStatusAlert: "",
-      processStatusMessage: "",
+      processStatus: true,
+      processStatusAlert: "alert alert-warning",
+      processStatusMessage: "Please wait",
     })
 
     const addTemplates = {
@@ -109,7 +109,7 @@ export class AddTemplates extends Component {
           processStatusAlert: "alert alert-success",
           processStatusMessage: "Successful",
         });
-        window.location = "/editordashboard";
+   //     window.location = "/editordashboard";
       },
       () => {
         this.setState({
@@ -150,12 +150,12 @@ export class AddTemplates extends Component {
                 </FormGroup>
                 
                 <FormGroup>
-                  {this.state.fileProcessStatus ? (
+                  {this.state.processStatus ? (
                     <div
-                      className={this.state.fileProcessStatusAlert}
+                      className={this.state.processStatusAlert}
                       role="alert"
                     >
-                      {this.state.fileProcessStatusMessage}
+                      {this.state.processStatusMessage}
                     </div>
                   ) : (
                     ""
