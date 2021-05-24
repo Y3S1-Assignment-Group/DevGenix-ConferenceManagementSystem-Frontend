@@ -13,6 +13,8 @@ const templateApi = {
         return {
             addTemplate: (newTemplate) => 
             axios.post(baseUrl + "/api/Templates", newTemplate, config),
+            viewTemplate: () =>
+            axios.get(baseUrl + "/api/Templates"),        
         }
     }
 }
