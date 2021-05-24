@@ -7,58 +7,102 @@ import {
   CardTitle,
   CardSubtitle,
   Button,
+  Modal,
+  ModalHeader,
+  ModalBody,
 } from "reactstrap";
 import { FaRegFilePowerpoint } from "react-icons/fa";
 import { BsCalendar } from "react-icons/bs";
 import { CgProfile } from "react-icons/cg";
+import { AiOutlineFieldTime } from "react-icons/ai";
 
 export class KeynoteCard extends Component {
   constructor(props) {
     super(props);
+    this.toggle = this.toggle.bind(this);
+    this.state = {
+      modal: false,
+    };
   }
+
+  toggle() {
+    this.setState({ modal: !this.state.modal });
+  }
+
   render() {
     return (
       <div>
-        <Card
-          style={{
-            borderRadius: "20px",
-            backgroundColor: "#21012B",
-            margin: "20px",
-          }}
-        >
-          <CardImg
-            top
-            width="100%"
-            src={this.props.workshop.workshop.workshopImage}
-            alt="Card image cap"
-            style={{ borderRadius: "20px" }}
-          />
-          <CardBody>
-            <CardTitle tag="h5" style={{ color: "white" }}>
+        <div>
+          <Card
+            style={{
+              borderRadius: "20px",
+              backgroundColor: "#21012B",
+              margin: "20px",
+            }}
+          >
+            <CardImg
+              top
+              width="100%"
+              src={this.props.workshop.workshop.workshopImage}
+              alt="Card image cap"
+              style={{ borderRadius: "20px" }}
+            />
+            <CardBody>
+              <CardTitle tag="h5" style={{ color: "white" }}>
+                {this.props.workshop.workshop.workshopName}
+              </CardTitle>
+              <CardSubtitle tag="h6" className="mb-2 text-muted">
+                {this.props.workshop.workshop.date.substring(0, 10)}
+              </CardSubtitle>
+              <CardText style={{ color: "white" }}>
+                {this.props.workshop.workshop.description}
+              </CardText>
+
+              <Button className="bg-transparent border-0">
+                <a href={this.props.workshop.workshop.fileLink} target="_blank">
+                  <FaRegFilePowerpoint color="white" fontSize="1.75em" />
+                </a>
+              </Button>
+
+              <Button className="bg-transparent border-0" onClick={this.toggle}>
+                <BsCalendar color="white" fontSize="1.5em" />
+              </Button>
+
+              <Button className="bg-transparent border-0">
+                <CgProfile color="white" fontSize="1.7em" />
+              </Button>
+            </CardBody>
+          </Card>
+        </div>
+
+        <div>
+          <Modal isOpen={this.state.modal} toggle={this.toggle}>
+            <ModalHeader toggle={this.toggle}>
+              {" "}
               {this.props.workshop.workshop.workshopName}
-            </CardTitle>
-            <CardSubtitle tag="h6" className="mb-2 text-muted">
-              {this.props.workshop.workshop.date.substring(0, 10)}
-            </CardSubtitle>
-            <CardText style={{ color: "white" }}>
-              {this.props.workshop.workshop.description}
-            </CardText>
-
-            <Button className="bg-transparent border-0">
-              <a href={this.props.workshop.workshop.fileLink} target="_blank">
-                <FaRegFilePowerpoint color="white" fontSize="1.75em" />
-              </a>
-            </Button>
-
-            <Button className="bg-transparent border-0">
-              <BsCalendar color="white" fontSize="1.5em" />
-            </Button>
-
-            <Button className="bg-transparent border-0">
-              <CgProfile color="white" fontSize="1.7em" />
-            </Button>
-          </CardBody>
-        </Card>
+            </ModalHeader>
+            <ModalBody>
+              <div>
+                <h6>
+                  <BsCalendar fontSize="1.5em" />{" "}
+                  <span>
+                    {" "}
+                    {this.props.workshop.workshop.date.substring(0, 10)}
+                  </span>
+                </h6>
+                <br />
+                <h6>
+                  <AiOutlineFieldTime fontSize="1.5em" />{" "}
+                  <span>
+                    {" "}
+                    {this.props.workshop.workshop.timeFrom} To{" "}
+                    {this.props.workshop.workshop.timeTo}
+                  </span>
+                </h6>
+              </div>
+            </ModalBody>
+          </Modal>
+        </div>
       </div>
     );
   }
