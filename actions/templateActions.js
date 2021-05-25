@@ -3,6 +3,7 @@ import templateApi from "../apis/TemplateAPI";
 export const ACTION_TYPES = {
     ADD_TEMPLATE: "ADD_TEMPLATE",
     GET_ALL_TEMPLATES: "GET_ALL_TEMPLATES",
+    DELETE_TEMPLATE: "DELETE_TEMPLATE"
   };
 
 export const addTemplate = (data, OnSuccess, OnFailure) => (dispatch) => {
@@ -33,4 +34,21 @@ export const addTemplate = (data, OnSuccess, OnFailure) => (dispatch) => {
         payload: response.data,
       });
     });
+  };
+
+  export const deleteTemplate =
+  (id) => (dispatch) => {
+    templateApi
+      .auth()
+      .deleteTemplate(id)
+      .then(() => {
+        dispatch({
+          type: ACTION_TYPES.DELETE_TEMPLATE,
+          payload: {id},
+        });
+       
+      })
+      .catch(() => {
+
+      });
   };
