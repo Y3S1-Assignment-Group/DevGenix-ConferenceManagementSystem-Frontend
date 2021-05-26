@@ -75,10 +75,7 @@ export class KeynoteCard extends Component {
                 <BsCalendar color="white" fontSize="1.5em" />
               </Button>
 
-              <Button
-                className="bg-transparent border-0"
-                onClick={this.toggleProfile}
-              >
+              <Button className="bg-transparent border-0" onClick={this.toggleProfile}>
                 <CgProfile color="white" fontSize="1.7em" />
               </Button>
             </CardBody>
