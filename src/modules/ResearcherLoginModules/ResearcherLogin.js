@@ -8,24 +8,34 @@ import {
   FormGroup,
   Label,
   Input,
-  Button,
+  Button, Modal, ModalHeader, ModalBody,
 } from 'reactstrap';
 import regImg from 'url:../../assets/regImg.svg';
 import * as actions from "../../../actions/authActions";
+import * as reasearcherActions from "../../../actions/researcherActions";
 import {connect} from "react-redux";
+import {BsCalendar} from "react-icons/bs";
+import StripeCheckout from "../../common/StripePayment/StripeCheckout";
 
 export class ResearcherLogin extends Component {
   constructor(props) {
     super(props);
     this.onLogin = this.onLogin.bind(this);
     this.onValueChange = this.onValueChange.bind(this);
+    this.toggle = this.toggle.bind(this);
     this.state = {
       email: "",
       password: "",
       processStatus: false,
       processStatusAlert: "",
       processStatusMessage: "",
+
+      modal: false,
     };
+  }
+
+  toggle() {
+    this.setState({ modal: !this.state.modal });
   }
 
   onValueChange(e) {
@@ -48,12 +58,12 @@ export class ResearcherLogin extends Component {
 
     this.props.ReasearcherLogin(
         loginReasearcherObj,
-        () => {
+          () => {
           this.setState({
             processStatusAlert: "alert alert-success",
             processStatusMessage: "Login successful",
           });
-          window.location = "/";
+          window.location="/"
         },
         () => {
           this.setState({
@@ -137,13 +147,42 @@ export class ResearcherLogin extends Component {
             </CardBody>
           </Card>
         </Container>
+
+        <div>
+          <Modal isOpen={this.state.modal} toggle={this.toggle}>
+            <ModalHeader toggle={this.toggle}>
+              {" "}
+              Pay the registration fee
+            </ModalHeader>
+            <ModalBody>
+              <div>
+                <h6>
+                  <BsCalendar fontSize="1.5em" />{" "}
+                  <span>
+                    {" "}
+                    Your reasearch paper has been approved. Please pay Rs1000.00 to proceed.
+                  </span>
+                </h6>
+                <br/>
+                <StripeCheckout role="REASEARCHER" amount="1000.00"/>
+              </div>
+            </ModalBody>
+          </Modal>
+        </div>
+
       </div>
     );
   }
 }
 
+const mapStateToProps = (state) => ({
+  singleReasearcher: state.researcherReducer.singleReasearcher,
+});
+
 const mapActionToProps = {
   ReasearcherLogin: actions.ReasearcherLogin,
+
+
 };
 
-export default connect(null, mapActionToProps)(ResearcherLogin);
+export default connect(mapStateToProps, mapActionToProps)(ResearcherLogin);
