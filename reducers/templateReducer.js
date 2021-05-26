@@ -16,6 +16,13 @@ export const templateReducer = (state = initialState, action) => {
             ...state,
             templates: [...action.payload],
         };
+        case ACTION_TYPES.DELETE_TEMPLATE:
+          return {
+            ...state,
+              templates: state.templates.filter(
+              (x) => x._id != action.payload.id
+            ),
+          };
       default:
         return state;
     }

@@ -13,6 +13,8 @@ const templateApi = {
       addTemplate: (newTemplate) =>
         axios.post(baseUrl + "/api/Templates", newTemplate, config),
       viewTemplate: () => axios.get(baseUrl + "/api/Templates"),
+      deleteTemplate: (id) =>
+        axios.delete(baseUrl + "/api/Templates/" + id, config),
     };
   },
 };

@@ -13,33 +13,36 @@ class TemplateTable extends Component {
 
   render() {
     return (
-      <div>
-        <div className="container">
-          <div className="row mt-5">
-            {this.props.templates &&
-              this.props.templates.map((singleTemplate) => {
-                return (
-                  <div className="col-lg-6 p-4">
-                    <p className="mt-2">
-                      <span className="templateTitle">
-                        {singleTemplate.templateName}
-                        <button className="btn btn-sm btn-danger font-weight-bolder m-2">
-                          X
-                        </button>
-                      </span>
-                    </p>
+      <div className="container">
+        <div className="row mt-5">
+          {this.props.templates &&
+            this.props.templates.map((singleTemplate) => {
+              return (
+                <div className="col-lg-6 p-4">
+                  <p className="mt-2">
+                    <span className="templateTitle">
+                      {singleTemplate.templateName}
+                      <button
+                        className="btn btn-sm btn-danger font-weight-bolder m-2"
+                        onClick={() =>
+                          this.props.deleteTemplate(singleTemplate._id)
+                        }
+                      >
+                        X
+                      </button>
+                    </span>
+                  </p>
 
-                    <iframe
-                      height="500px"
-                      width="100%"
-                      // src={singleTemplate.fileLink}
-                      // src="https://docs.google.com/presentation/d/1VYtsz71Lx5DVJhudqMWBzmWc1AfA4TAXTIwHccPY4cM/edit?usp=sharing"
-                    ></iframe>
-                    <br />
-                  </div>
-                );
-              })}
-          </div>
+                  <iframe
+                    height="500px"
+                    width="100%"
+                    src={singleTemplate.fileLink}
+                    // src="https://docs.google.com/presentation/d/1VYtsz71Lx5DVJhudqMWBzmWc1AfA4TAXTIwHccPY4cM/edit?usp=sharing"
+                  ></iframe>
+                  <br />
+                </div>
+              );
+            })}
         </div>
       </div>
     );
@@ -52,6 +55,7 @@ const mapStateToProps = (state) => ({
 
 const mapActionToProps = {
   viewTemplate: actions.viewTemplate,
+  deleteTemplate: actions.deleteTemplate,
 };
 
 export default connect(mapStateToProps, mapActionToProps)(TemplateTable);
