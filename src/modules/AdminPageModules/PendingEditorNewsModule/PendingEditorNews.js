@@ -1,16 +1,16 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import * as actions from "../../../../actions/templateActions";
+import * as actions from "../../../../actions/latestNewsActions";
 import { Table, Card, CardBody, Button } from "reactstrap";
 import { AiTwotoneLike, AiTwotoneDislike } from "react-icons/ai";
 
-export class PendingEditorTemplates extends Component {
+export class PendingEditorNews extends Component {
   constructor(props) {
     super(props);
   }
 
   componentDidMount() {
-    this.props.viewTemplate();
+    this.props.fetchAllLatestNews();
   }
   render() {
     return (
@@ -19,7 +19,7 @@ export class PendingEditorTemplates extends Component {
           <h3 className="text-center text-white mt-5 mb-5 display-3">
             PENDING EDITOR TEMPLATES
           </h3>
-          <Card>
+          {/* <Card>
             <CardBody className="p-3">
               <div
                 style={{
@@ -47,7 +47,7 @@ export class PendingEditorTemplates extends Component {
                             <td>{singleTemplate.templateName}</td>
                             <td>
                               <a href={singleTemplate.fileLink} target="_blank">
-                                Download
+                                Download Link
                               </a>
                             </td>
                             <td>
@@ -105,7 +105,7 @@ export class PendingEditorTemplates extends Component {
                 </Table>
               </div>
             </CardBody>
-          </Card>
+          </Card> */}
         </div>
       </div>
     );
@@ -117,10 +117,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapActionToProps = {
-  viewTemplate: actions.viewTemplate,
-  approveTemplate: actions.approveTemplate,
+  fetchAllLatestNews: actions.fetchAllLatestNews,
+  approveNewsFunction: actions.approveNewsFunction,
 };
-export default connect(
-  mapStateToProps,
-  mapActionToProps
-)(PendingEditorTemplates);
+export default connect(mapStateToProps, mapActionToProps)(PendingEditorNews);

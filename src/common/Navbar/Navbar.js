@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import * as actions from "../../../actions/authActions";
 import "./Navbar.css";
 
 export class Navbar extends Component {
@@ -86,58 +88,138 @@ export class Navbar extends Component {
                 </a>
               </li>
             </ul>
-            <ul className="navbar-nav mr-auto navLinkTab mr-sm-5 navLinkLeft">
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  id="navbarDropdown"
-                  role="button"
-                  data-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                  style={{ color: "#ffffff" }}
-                >
-                  LOGIN
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="/attendeelogin">
-                    ATTENDEE
+
+            {this.props.user ? (
+              <ul className="navbar-nav mr-auto navLinkTab mr-sm-5 navLinkLeft">
+                {this.props.user.role == "attendee" ? (
+                  <li className="nav-item active">
+                    <a
+                      className="nav-link navLinkTab js-scroll-trigger"
+                      href="/"
+                      style={{ color: "#ffffff" }}
+                    >
+                      {this.props.user.email}
+                    </a>
+                  </li>
+                ) : this.props.user.role == "admin" ? (
+                  <li className="nav-item active">
+                    <a
+                      className="nav-link navLinkTab js-scroll-trigger"
+                      href="/admin"
+                      style={{ color: "#ffffff" }}
+                    >
+                      {this.props.user.email}
+                    </a>
+                  </li>
+                ) : this.props.user.role == "editor" ? (
+                  <li className="nav-item active">
+                    <a
+                      className="nav-link navLinkTab js-scroll-trigger"
+                      href="/editordashboard"
+                      style={{ color: "#ffffff" }}
+                    >
+                      {this.props.user.email}
+                    </a>
+                  </li>
+                ) : this.props.user.role == "reviewer" ? (
+                  <li className="nav-item active">
+                    <a
+                      className="nav-link navLinkTab js-scroll-trigger"
+                      href="/reviewerDashboard"
+                      style={{ color: "#ffffff" }}
+                    >
+                      {this.props.user.email}
+                    </a>
+                  </li>
+                ) : this.props.user.role == "presenter" ? (
+                  <li className="nav-item active">
+                    <a
+                      className="nav-link navLinkTab js-scroll-trigger"
+                      href="/"
+                      style={{ color: "#ffffff" }}
+                    >
+                      {this.props.user.email}
+                    </a>
+                  </li>
+                ) : this.props.user.role == "researcher" ? (
+                  <li className="nav-item active">
+                    <a
+                      className="nav-link navLinkTab js-scroll-trigger"
+                      href="/"
+                      style={{ color: "#ffffff" }}
+                    >
+                      {this.props.user.email}
+                    </a>
+                  </li>
+                ) : (
+                  ""
+                )}
+                <li className="nav-item active" style={{ cursor: "pointer" }}>
+                  <a
+                    className="nav-link navLinkTab"
+                    onClick={() => {
+                      this.props.logout();
+                    }}
+                    style={{ color: "#ffffff" }}
+                  >
+                    Logout
                   </a>
-                  <a class="dropdown-item" href="/researcherlogin">
-                    RESEARCHER
+                </li>
+              </ul>
+            ) : (
+              <ul className="navbar-nav mr-auto navLinkTab mr-sm-5 navLinkLeft">
+                <li class="nav-item dropdown">
+                  <a
+                    class="nav-link dropdown-toggle"
+                    href="#"
+                    id="navbarDropdown"
+                    role="button"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    style={{ color: "#ffffff" }}
+                  >
+                    LOGIN
                   </a>
-                  <a class="dropdown-item" href="/presenterlogin">
-                    PRESENTER
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="/attendeelogin">
+                      ATTENDEE
+                    </a>
+                    <a class="dropdown-item" href="/researcherlogin">
+                      RESEARCHER
+                    </a>
+                    <a class="dropdown-item" href="/presenterlogin">
+                      PRESENTER
+                    </a>
+                  </div>
+                </li>
+                <li class="nav-item dropdown">
+                  <a
+                    class="nav-link dropdown-toggle"
+                    href="#"
+                    id="navbarDropdown"
+                    role="button"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    style={{ color: "#ffffff" }}
+                  >
+                    REGISTER
                   </a>
-                </div>
-              </li>
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  id="navbarDropdown"
-                  role="button"
-                  data-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                  style={{ color: "#ffffff" }}
-                >
-                  REGISTER
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="/AttendeeRegistration">
-                    ATTENDEE
-                  </a>
-                  <a class="dropdown-item" href="/ReasearcherRegistration">
-                    RESEARCHER
-                  </a>
-                  <a class="dropdown-item" href="/PresenterRegistration">
-                    PRESENTER
-                  </a>
-                </div>
-              </li>
-            </ul>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="/AttendeeRegistration">
+                      ATTENDEE
+                    </a>
+                    <a class="dropdown-item" href="/ReasearcherRegistration">
+                      RESEARCHER
+                    </a>
+                    <a class="dropdown-item" href="/PresenterRegistration">
+                      PRESENTER
+                    </a>
+                  </div>
+                </li>
+              </ul>
+            )}
           </div>
         </nav>
       </div>
@@ -145,4 +227,12 @@ export class Navbar extends Component {
   }
 }
 
-export default Navbar;
+const mapStateToProps = (state) => ({
+  user: state.authReducer.user,
+});
+
+const mapActionToProps = {
+  logout: actions.logout,
+};
+
+export default connect(mapStateToProps, mapActionToProps)(Navbar);
