@@ -34,11 +34,12 @@ class TemplateTable extends Component {
                   </p>
 
                   <iframe
-                    height="500px"
-                    width="100%"
                     src={singleTemplate.fileLink}
-                    // src="https://docs.google.com/presentation/d/1VYtsz71Lx5DVJhudqMWBzmWc1AfA4TAXTIwHccPY4cM/edit?usp=sharing"
+                    width="100%"
+                    height="600px"
+                    frameBorder="0"
                   ></iframe>
+
                   <br />
                 </div>
               );

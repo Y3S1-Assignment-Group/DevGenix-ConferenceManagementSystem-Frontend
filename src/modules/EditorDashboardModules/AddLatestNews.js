@@ -52,12 +52,16 @@ class AddLatestNews extends Component {
         this.setState({
           processStatusAlert: "alert alert-success",
           processStatusMessage: "News Added Successful",
+          message: "",
+          hyperlink: "",
         });
       },
       () => {
         this.setState({
           processStatusAlert: "alert alert-danger",
           processStatusMessage: "Something went wrong. Please try again.",
+          message: "",
+          hyperlink: "",
         });
       }
     );
@@ -89,6 +93,7 @@ class AddLatestNews extends Component {
                       type="textarea"
                       name="message"
                       id="message"
+                      value={this.state.message}
                       placeholder="Enter  message"
                       onChange={(e) => {
                         this.onValueChange(e);
@@ -106,6 +111,7 @@ class AddLatestNews extends Component {
                       type="text"
                       name="hyperlink"
                       id="hyperlink"
+                      value={this.state.hyperlink}
                       placeholder="Enter Hyperlink"
                       onChange={(e) => {
                         this.onValueChange(e);

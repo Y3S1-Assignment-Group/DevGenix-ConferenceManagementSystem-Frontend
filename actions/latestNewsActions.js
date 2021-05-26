@@ -34,21 +34,16 @@ export const fetchAllLatestNews = () => (dispatch) => {
         type: ACTION_TYPES.GET_ALL_LATEST_NEWS,
         payload: response.data,
       });
-    });
+    })
+    .catch(() => {});
 };
 
-export const deleteLatestNews = (deletedNews) => (dispatch) => {
-  console.log(deletedNews);
-  const id = deletedNews.id;
-  latestNewsAPI
-    .latestNews()
-    .deleteNews(deletedNews)
-    .then(() => {
-      dispatch({
-        type: ACTION_TYPES.DELETE_NEWS,
-        payload: id,
-      });
-    });
+export const deleteLatestNews = (id) => async (dispatch) => {
+  latestNewsAPI.latestNews().deleteLatestNews(id);
+  await dispatch({
+    type: ACTION_TYPES.DELETE_NEWS,
+    payload: id,
+  });
 };
 
 export const fetchAllApprovedNews = () => (dispatch) => {
@@ -60,7 +55,8 @@ export const fetchAllApprovedNews = () => (dispatch) => {
         type: ACTION_TYPES.GET_ALL_APPROVED_NEWS,
         payload: response.data,
       });
-    });
+    })
+    .catch(() => {});
 };
 
 export const fetchAllUnapprovedNews = () => (dispatch) => {
@@ -72,7 +68,8 @@ export const fetchAllUnapprovedNews = () => (dispatch) => {
         type: ACTION_TYPES.GET_ALL_UNAPPROVED_NEWS,
         payload: response.data,
       });
-    });
+    })
+    .catch(() => {});
 };
 
 export const approveNewsFunction = (id, newsObj) => (dispatch) => {
@@ -84,5 +81,6 @@ export const approveNewsFunction = (id, newsObj) => (dispatch) => {
         type: ACTION_TYPES.APPROVE_NEWS,
         payload: response.data,
       });
-    });
+    })
+    .catch(() => {});
 };

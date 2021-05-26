@@ -15,6 +15,10 @@ const templateApi = {
       viewTemplate: () => axios.get(baseUrl + "/api/Templates"),
       deleteTemplate: (id) =>
         axios.delete(baseUrl + "/api/Templates/" + id, config),
+      approveTemplate: (id, approveObj) =>
+        axios.put(baseUrl + "/api/Templates/approve/" + id, approveObj, config),
+      viewTemplateApproved: () =>
+        axios.get(baseUrl + "/api/Templates/approved"),
     };
   },
 };

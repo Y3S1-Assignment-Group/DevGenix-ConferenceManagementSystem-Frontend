@@ -22,10 +22,8 @@ const newsApi = {
           newObj,
           config
         ),
-      deleteNews: (deletedNews) => {
-        console.log("delete news", deletedNews);
-        console.log("config", config);
-        axios.delete(baseUrl + "/api/LatestNews", deletedNews, config);
+      deleteLatestNews: (id) => {
+        axios.delete(baseUrl + "/api/LatestNews/" + id);
       },
     };
   },

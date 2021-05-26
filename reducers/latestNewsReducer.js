@@ -39,7 +39,7 @@ export const latestNewsReducer = (state = initialState, action) => {
       return {
         ...state,
         latestNewsList: state.latestNewsList.filter(
-          (x) => x._id !== action.payload.id
+          (x) => x._id !== action.payload
         ),
       };
     default:

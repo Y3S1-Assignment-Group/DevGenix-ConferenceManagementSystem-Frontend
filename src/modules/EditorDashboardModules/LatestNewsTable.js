@@ -14,11 +14,7 @@ export class LatestNewsTable extends Component {
   }
 
   deleteLatestFunc(newsID) {
-    alert("click");
-    const dataObj = {
-      id: newsID,
-    };
-    this.props.deleteLatestNews(dataObj);
+    this.props.deleteLatestNews(newsID);
   }
   render() {
     return (
