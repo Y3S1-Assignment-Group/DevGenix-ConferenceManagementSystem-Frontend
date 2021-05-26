@@ -18,75 +18,78 @@ export class ConferenceCard extends Component {
   render() {
     return (
       <div>
-        {this.props.approvedConferenceList.map((singleConference) => {
-          return (
-            <Card
-              style={{
-                borderRadius: "20px",
-                backgroundColor: "#21012B",
-                marginLeft: "20px",
-              }}
-              className="text-center"
-            >
-              <CardBody>
-                <h2 className="text-white display-5">Conference Details</h2>
-                <hr style={{ color: "white" }} />
-                <CardTitle style={{ color: "white" }}>
-                  <div className="row">
-                    <div className="col-md-6 text-center">Title </div>
-
-                    <div className="col-md-6 text-left">
-                      {singleConference.confTitle}
-                    </div>
-                  </div>
-                </CardTitle>
-                <center>
-                  {" "}
-                  <CardText style={{ color: "white" }}>
+        {this.props.approvedConferenceList
+          .reverse()
+          .slice(0, 1)
+          .map((singleConference) => {
+            return (
+              <Card
+                style={{
+                  borderRadius: "20px",
+                  backgroundColor: "#21012B",
+                  marginLeft: "20px",
+                }}
+                className="text-center"
+              >
+                <CardBody>
+                  <h2 className="text-white display-5">Conference Details</h2>
+                  <hr style={{ color: "white" }} />
+                  <CardTitle style={{ color: "white" }}>
                     <div className="row">
-                      <div className="col-md-6 text-center">About </div>
+                      <div className="col-md-6 text-center">Title </div>
 
                       <div className="col-md-6 text-left">
-                        {" "}
-                        {singleConference.description}
+                        {singleConference.confTitle}
                       </div>
                     </div>
-                  </CardText>
-                  <CardText style={{ color: "white" }}>
-                    <div className="row">
-                      <div className="col-md-6 text-center">From</div>
+                  </CardTitle>
+                  <center>
+                    {" "}
+                    <CardText style={{ color: "white" }}>
+                      <div className="row">
+                        <div className="col-md-6 text-center">About </div>
 
-                      <div className="col-md-6 text-left">
-                        {" "}
-                        {singleConference.fromTime}
+                        <div className="col-md-6 text-left">
+                          {" "}
+                          {singleConference.description}
+                        </div>
                       </div>
-                    </div>
-                  </CardText>
-                  <CardText style={{ color: "white" }}>
-                    <div className="row">
-                      <div className="col-md-6 text-center">To</div>
+                    </CardText>
+                    <CardText style={{ color: "white" }}>
+                      <div className="row">
+                        <div className="col-md-6 text-center">From</div>
 
-                      <div className="col-md-6 text-left">
-                        {" "}
-                        {singleConference.toTime}
+                        <div className="col-md-6 text-left">
+                          {" "}
+                          {singleConference.fromTime}
+                        </div>
                       </div>
-                    </div>
-                  </CardText>
-                  <CardText style={{ color: "white" }}>
-                    <div className="row">
-                      <div className="col-md-6 text-center">Venue</div>
+                    </CardText>
+                    <CardText style={{ color: "white" }}>
+                      <div className="row">
+                        <div className="col-md-6 text-center">To</div>
 
-                      <div className="col-md-6 text-left">
-                        {" "}
-                        {singleConference.venue}
+                        <div className="col-md-6 text-left">
+                          {" "}
+                          {singleConference.toTime}
+                        </div>
                       </div>
-                    </div>
-                  </CardText>
-                </center>
-              </CardBody>
-            </Card>
-          );
-        })}
+                    </CardText>
+                    <CardText style={{ color: "white" }}>
+                      <div className="row">
+                        <div className="col-md-6 text-center">Venue</div>
+
+                        <div className="col-md-6 text-left">
+                          {" "}
+                          {singleConference.venue}
+                        </div>
+                      </div>
+                    </CardText>
+                  </center>
+                </CardBody>
+              </Card>
+            );
+          })}
       </div>
     );
   }

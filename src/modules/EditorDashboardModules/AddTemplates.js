@@ -26,7 +26,7 @@ export class AddTemplates extends Component {
       processStatus: false,
       processStatusAlert: "",
       processStatusMessage: "",
-     
+
       fileProcessStatus: false,
       fileProcessStatusAlert: "",
       fileProcessStatusMessage: "",
@@ -34,7 +34,7 @@ export class AddTemplates extends Component {
       uploadProfilePercentage: 0,
       uploadTemplateImagePercentage: 0,
       uploadTemplateFilePercentage: 0,
-    }
+    };
   }
 
   onValueChange(e) {
@@ -95,7 +95,7 @@ export class AddTemplates extends Component {
       processStatus: true,
       processStatusAlert: "alert alert-warning",
       processStatusMessage: "Please wait",
-    })
+    });
 
     const addTemplates = {
       templateName: this.state.templateName,
@@ -109,16 +109,15 @@ export class AddTemplates extends Component {
           processStatusAlert: "alert alert-success",
           processStatusMessage: "Successful",
         });
-   //     window.location = "/editordashboard";
+        //     window.location = "/editordashboard";
       },
       () => {
         this.setState({
           processStatusAlert: "alert alert-danger",
-          processStatusMessage:
-            "Please try again.",
+          processStatusMessage: "Please try again.",
         });
       }
-    )
+    );
   }
 
   render() {
@@ -131,30 +130,39 @@ export class AddTemplates extends Component {
               <hr />
               <Form onSubmit={this.onAddTemplate}>
                 <FormGroup row>
-                  <Label for="WordLink" sm={4}>
+                  <Label for="WordLink" sm={2}>
                     Template Name
                   </Label>
-                  <Col sm={8}>
-                    <Input type="text" name="templateName" id="templateName"  onChange={(e) => {
-                            this.onValueChange(e);
-                          }}/>
+                  <Col sm={10}>
+                    <Input
+                      type="text"
+                      name="templateName"
+                      id="templateName"
+                      onChange={(e) => {
+                        this.onValueChange(e);
+                      }}
+                    />
                   </Col>
                 </FormGroup>
                 <FormGroup row>
-                  <Label for="WordLink" sm={4}>
+                  <Label for="WordLink" sm={2}>
                     File
                   </Label>
-                  <Col sm={8}>
-                    <Input type="file" name="fileLink" id="fileLink"  onChange={(e) => {this.uploadFile(e);}}/>
+                  <Col sm={10}>
+                    <Input
+                      type="file"
+                      name="fileLink"
+                      id="fileLink"
+                      onChange={(e) => {
+                        this.uploadFile(e);
+                      }}
+                    />
                   </Col>
                 </FormGroup>
-                
+
                 <FormGroup>
                   {this.state.processStatus ? (
-                    <div
-                      className={this.state.processStatusAlert}
-                      role="alert"
-                    >
+                    <div className={this.state.processStatusAlert} role="alert">
                       {this.state.processStatusMessage}
                     </div>
                   ) : (
@@ -167,8 +175,8 @@ export class AddTemplates extends Component {
                   />
                 </FormGroup>
 
-                <FormGroup check row>
-                  <Col sm={{ size: 10, offset: 4 }}>
+                <FormGroup row>
+                  <Col sm={{ size: 10, offset: 2 }}>
                     <Button className="btn btn-warning" type="submit">
                       Submit
                     </Button>

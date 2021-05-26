@@ -4,6 +4,7 @@ import Footer from "../../common/Footer/Footer";
 import AdminDashboard from "../../modules/AdminPageModules/AdminDashboardModule/AdminDashboard";
 import PendingEditorContent from "../../modules/AdminPageModules/PendingEditorContentModule/PendingEditorContent";
 import PendingEditorTemplates from "../../modules/AdminPageModules/PendingEditorTemplatesModule/PendingEditorTemplates";
+import { PendingEditorLatestNews } from "../../modules/AdminPageModules/PendingEditorLatestNews/PendingEditorLatestNews";
 
 export class AdminPage extends Component {
   render() {
@@ -13,6 +14,7 @@ export class AdminPage extends Component {
         <AdminDashboard />
         <PendingEditorContent />
         <PendingEditorTemplates />
+        <PendingEditorLatestNews />
         <Footer />
       </div>
     );
