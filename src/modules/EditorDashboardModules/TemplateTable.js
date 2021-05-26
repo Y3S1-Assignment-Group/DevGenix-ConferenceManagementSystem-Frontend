@@ -5,6 +5,7 @@ import * as actions from "../../../actions/templateActions";
 class TemplateTable extends Component {
   constructor(props) {
     super(props);
+    
   }
 
   componentDidMount() {
@@ -22,7 +23,7 @@ class TemplateTable extends Component {
             <p className="mt-2">
               <span className="templateTitle">
                 {singleTemplate.templateName}
-                <button className="btn btn-sm btn-danger font-weight-bolder m-2">
+                <button className="btn btn-sm btn-danger font-weight-bolder m-2" onClick = {() => this.props.deleteTemplate(singleTemplate._id)}>
                   X
                 </button>
               </span>
@@ -52,6 +53,7 @@ const mapStateToProps = (state) => ({
 
 const mapActionToProps = {
   viewTemplate: actions.viewTemplate,
+  deleteTemplate: actions.deleteTemplate,
 };
 
 export default connect(mapStateToProps, mapActionToProps)(TemplateTable);
