@@ -19,6 +19,7 @@ export const adminRegister = (data, OnSuccess, OnFailure) => (dispatch) => {
     .register(data)
     .then((response) => {
       const user = {
+        role: "admin",
         email: data.email,
         token: response.data.token,
       };
@@ -47,6 +48,7 @@ export const loginAdmin = (data, OnSuccess, OnFailure) => (dispatch) => {
     .login(data)
     .then((response) => {
       const user = {
+        role: "admin",
         email: data.email,
         token: response.data.token,
       };
@@ -76,6 +78,7 @@ export const editorLogin = (data, OnSuccess, OnFailure) => (dispatch) => {
     .login(data)
     .then((response) => {
       const user = {
+        role: "editor",
         email: data.email,
         token: response.data.token,
       };
@@ -105,6 +108,7 @@ export const loginReviewer = (data, OnSuccess, OnFailure) => (dispatch) => {
     .login(data)
     .then((response) => {
       const user = {
+        role: "reviewer",
         email: data.email,
         token: response.data.token,
       };
@@ -134,6 +138,7 @@ export const presenterRegister = (data, OnSuccess, OnFailure) => (dispatch) => {
     .register(data)
     .then((response) => {
       const user = {
+        role: "presenter",
         email: data.email,
         token: response.data.token,
       };
@@ -162,6 +167,7 @@ export const presenterLogin = (data, OnSuccess, OnFailure) => (dispatch) => {
     .login(data)
     .then((response) => {
       const user = {
+        role: "presenter",
         email: data.email,
         token: response.data.token,
       };
@@ -184,64 +190,67 @@ export const presenterLogin = (data, OnSuccess, OnFailure) => (dispatch) => {
     });
 };
 
-export const ReasearcherRegister = (data, OnSuccess, OnFailure) => (dispatch) => {
+export const ReasearcherRegister =
+  (data, OnSuccess, OnFailure) => (dispatch) => {
     reasearcherApi
-        .auth()
-        .register(data)
-        .then((response) => {
-            const user = {
-                email: data.email,
-                token: response.data.token,
-            };
-            dispatch({
-                type: ACTION_TYPES.REGISTER_SUCCESS,
-                payload: user,
-            });
-
-            if (response.data.token) {
-                localStorage.setItem("user", JSON.stringify(user));
-            }
-            OnSuccess();
-        })
-        .catch(() => {
-            dispatch({
-                type: ACTION_TYPES.REGISTER_FAIL,
-                payload: null,
-            });
-            OnFailure();
+      .auth()
+      .register(data)
+      .then((response) => {
+        const user = {
+          role: "researcher",
+          email: data.email,
+          token: response.data.token,
+        };
+        dispatch({
+          type: ACTION_TYPES.REGISTER_SUCCESS,
+          payload: user,
         });
-};
+
+        if (response.data.token) {
+          localStorage.setItem("user", JSON.stringify(user));
+        }
+        OnSuccess();
+      })
+      .catch(() => {
+        dispatch({
+          type: ACTION_TYPES.REGISTER_FAIL,
+          payload: null,
+        });
+        OnFailure();
+      });
+  };
 
 export const ReasearcherLogin = (data, OnSuccess, OnFailure) => (dispatch) => {
-    reasearcherApi
-        .auth()
-        .login(data)
-        .then((response) => {
-            const user = {
-                email: data.email,
-                token: response.data.token,
-            };
-            dispatch({
-                type: ACTION_TYPES.LOGIN_SUCCESS,
-                payload: user,
-            });
+  reasearcherApi
+    .auth()
+    .login(data)
+    .then((response) => {
+      const user = {
+        role: "researcher",
+        email: data.email,
+        token: response.data.token,
+      };
+      dispatch({
+        type: ACTION_TYPES.LOGIN_SUCCESS,
+        payload: user,
+      });
 
-            if (response.data.token) {
-                localStorage.setItem("user", JSON.stringify(user));
-            }
-            OnSuccess();
-        })
-        .catch(() => {
-            dispatch({
-                type: ACTION_TYPES.LOGIN_FAIL,
-                payload: null,
-            });
-            OnFailure();
-        });
+      if (response.data.token) {
+        localStorage.setItem("user", JSON.stringify(user));
+      }
+      OnSuccess();
+    })
+    .catch(() => {
+      dispatch({
+        type: ACTION_TYPES.LOGIN_FAIL,
+        payload: null,
+      });
+      OnFailure();
+    });
 };
 
 export const logout = () => (dispatch) => {
-  localStorage.removeItem("x-auth-token");
+  localStorage.removeItem("user");
   dispatch({
     type: ACTION_TYPES.LOGOUT,
   });
@@ -254,6 +263,7 @@ export const attendeeRegister = (data, OnSuccess, OnFailure) => (dispatch) => {
     .register(data)
     .then((response) => {
       const user = {
+        role: "attendee",
         email: data.email,
         token: response.data.token,
       };
@@ -282,6 +292,7 @@ export const loginAttendee = (data, OnSuccess, OnFailure) => (dispatch) => {
     .login(data)
     .then((response) => {
       const user = {
+        role: "attendee",
         email: data.email,
         token: response.data.token,
       };
