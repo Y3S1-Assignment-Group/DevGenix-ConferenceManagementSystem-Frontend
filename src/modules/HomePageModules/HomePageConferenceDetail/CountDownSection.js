@@ -2,11 +2,14 @@ import React, { Component } from "react";
 import Countdown from "react-countdown";
 
 export class CountDownSection extends Component {
+  constructor(props){
+    super(props)
+  }
   render() {
     return (
       <div>
         <Countdown
-          date={Date.now() + 10000000000}
+          date={Date.now() + 1000000000}
           intervalDelay={0}
           precision={3}
           renderer={(props) => (
