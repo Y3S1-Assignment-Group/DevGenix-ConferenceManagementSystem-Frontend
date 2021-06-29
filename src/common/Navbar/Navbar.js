@@ -145,7 +145,7 @@ export class Navbar extends Component {
                   <li className="nav-item active">
                     <a
                       className="nav-link navLinkTab js-scroll-trigger"
-                      href="/"
+                      href="/researcher"
                       style={{ color: "#ffffff" }}
                     >
                       {this.props.user.email}

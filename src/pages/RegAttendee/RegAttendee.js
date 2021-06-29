@@ -17,14 +17,13 @@ import {
 import Navbar from "../../common/Navbar/Navbar";
 import StripeCheckout from "../../common/StripePayment/StripeCheckout";
 import Footer from "../../common/Footer/Footer";
-import * as actions from "../../../actions/workshopActions"
+import * as actions from "../../../actions/workshopActions";
 import { connect } from "react-redux";
 
 class RegAttendee extends Component {
-
   constructor(props) {
     super(props);
-    this.handleCheckboxChange = this.handleCheckboxChange.bind(this)
+    this.handleCheckboxChange = this.handleCheckboxChange.bind(this);
     this.onValueChange = this.onValueChange.bind(this);
     this.uploadImage = this.uploadImage.bind(this);
     this.state = {
@@ -37,23 +36,21 @@ class RegAttendee extends Component {
       processStatusMessage: "",
       contactNumber: "",
       jobStatus: "",
-      imgLink:"",
+      imgLink: "",
       universityOrWorkPlace: "",
       statementOfInterest: "",
-      workshops:[
+      workshops: [
         {
-          workshopName:""
-        }
+          workshopName: "",
+        },
       ],
 
       uploadPercentage: 0,
-
     };
   }
 
   componentDidMount() {
     this.props.fetchAllApprovedWorkshops();
-
   }
 
   uploadImage(e) {
@@ -105,20 +102,25 @@ class RegAttendee extends Component {
 
   handleCheckboxChange = (event) => {
     let singleWorkshop = {
-      workshopName:event.target.value
-    }
+      workshopName: event.target.value,
+    };
     if (event.target.checked) {
       if (!this.state.workshops.includes(singleWorkshop.workshopName)) {
-        this.setState(prevState => ({ workshops: [...prevState.workshops, singleWorkshop]}))
+        this.setState((prevState) => ({
+          workshops: [...prevState.workshops, singleWorkshop],
+        }));
       }
     } else {
-      this.setState(prevState => ({ workshops: prevState.workshops.filter(day => day.workshopName !== singleWorkshop.workshopName) }));
+      this.setState((prevState) => ({
+        workshops: prevState.workshops.filter(
+          (day) => day.workshopName !== singleWorkshop.workshopName
+        ),
+      }));
     }
-  }
-
+  };
 
   onValueChange(e) {
-    this.setState({ [e.target.name]: e.target.value })
+    this.setState({ [e.target.name]: e.target.value });
   }
 
   render() {
@@ -132,10 +134,7 @@ class RegAttendee extends Component {
               <Form>
                 <FormGroup>
                   {this.state.processStatus ? (
-                    <div
-                      className={this.state.processStatusAlert}
-                      role="alert"
-                    >
+                    <div className={this.state.processStatusAlert} role="alert">
                       {this.state.processStatusMessage}
                     </div>
                   ) : (
@@ -231,9 +230,14 @@ class RegAttendee extends Component {
                     Job Status
                   </Label>
                   <Col sm={10}>
-                    <Input type="select" name="jobStatus" id="jobstatus" onChange={(e) => {
+                    <Input
+                      type="select"
+                      name="jobStatus"
+                      id="jobstatus"
+                      onChange={(e) => {
                         this.onValueChange(e);
-                      }}>
+                      }}
+                    >
                       <option value="Professional">Professional</option>
                       <option value="Student">Student</option>
                       <option value="Industry expert">Industry expert</option>
@@ -265,10 +269,7 @@ class RegAttendee extends Component {
 
                 <FormGroup>
                   {this.state.processStatus ? (
-                    <div
-                      className={this.state.processStatusAlert}
-                      role="alert"
-                    >
+                    <div className={this.state.processStatusAlert} role="alert">
                       {this.state.processStatusMessage}
                     </div>
                   ) : (
@@ -302,9 +303,14 @@ class RegAttendee extends Component {
                     Statement of Interests
                   </Label>
                   <Col sm={10}>
-                    <Input type="textarea" name="statementOfInterest" id="statementOfInterest" onChange={(e) => {
-                      this.onValueChange(e);
-                    }} />
+                    <Input
+                      type="textarea"
+                      name="statementOfInterest"
+                      id="statementOfInterest"
+                      onChange={(e) => {
+                        this.onValueChange(e);
+                      }}
+                    />
                   </Col>
                 </FormGroup>
 
@@ -313,21 +319,41 @@ class RegAttendee extends Component {
                     Select if you are attending{" "}
                   </Label>
                   <Col sm={{ size: 10 }}>
-                    {this.props.approvedWorkshopList.map(singleWorkshop => {return(
-                                          <FormGroup check>
-                                          <Label check>
-                                            <Input type="checkbox" id={singleWorkshop.workshop.workshopName} value={singleWorkshop.workshop.workshopName} onChange={ this.handleCheckboxChange}/> {singleWorkshop.workshop.workshopName}
-                                          </Label>
-                                        </FormGroup>
-                    )})}
+                    {this.props.approvedWorkshopList.map((singleWorkshop) => {
+                      return (
+                        <FormGroup check>
+                          <Label check>
+                            <Input
+                              type="checkbox"
+                              id={singleWorkshop.workshop.workshopName}
+                              value={singleWorkshop.workshop.workshopName}
+                              onChange={this.handleCheckboxChange}
+                            />{" "}
+                            {singleWorkshop.workshop.workshopName}
+                          </Label>
+                        </FormGroup>
+                      );
+                    })}
                   </Col>
                 </FormGroup>
                 <br />
               </Form>
 
               <Col sm={10}>
-                <StripeCheckout role="ATTENDEE" amount="1000.00" firstName={this.state.firstName} lastName={this.state.lastName} email={this.state.email} password={this.state.password}
-                contactNumber={this.state.contactNumber} jobStatus={this.state.jobStatus} universityOrWorkPlace={this.state.universityOrWorkPlace} statementOfInterest={this.state.statementOfInterest} workshops={this.state.workshops} imgLink={this.state.imgLink} />
+                <StripeCheckout
+                  role="ATTENDEE"
+                  amount="1000.00"
+                  firstName={this.state.firstName}
+                  lastName={this.state.lastName}
+                  email={this.state.email}
+                  password={this.state.password}
+                  contactNumber={this.state.contactNumber}
+                  jobStatus={this.state.jobStatus}
+                  universityOrWorkPlace={this.state.universityOrWorkPlace}
+                  statementOfInterest={this.state.statementOfInterest}
+                  workshops={this.state.workshops}
+                  imgLink={this.state.imgLink}
+                />
               </Col>
             </CardBody>
           </Card>
@@ -345,7 +371,6 @@ class RegAttendee extends Component {
 const mapActionToProps = {
   fetchAllApprovedWorkshops: actions.fetchAllApprovedWorkshops,
 };
-
 
 const mapStateToProps = (state) => ({
   approvedWorkshopList: state.workshopReducer.approvedWorkshopList,

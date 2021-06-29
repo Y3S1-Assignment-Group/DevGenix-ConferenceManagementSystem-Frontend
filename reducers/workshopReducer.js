@@ -1,11 +1,11 @@
 import { ACTION_TYPES } from "../actions/workshopActions";
 
 const initialState = {
+  presenterWorkshop: null,
   approvedWorkshopList: [],
   upapprovedWorkshopList: [],
   approvedWorkshopListPending: true,
   unapprovedWorkshopListPending: true,
-
 };
 
 export const workshopReducer = (state = initialState, action) => {
@@ -23,13 +23,17 @@ export const workshopReducer = (state = initialState, action) => {
         unapprovedWorkshopListPending: false,
       };
     case ACTION_TYPES.APPROVE_WORKSHOP:
-      console.log(action.payload._id)
       return {
         ...state,
         approvedWorkshopList: [...state.approvedWorkshopList, action.payload],
         upapprovedWorkshopList: state.upapprovedWorkshopList.filter(
           (x) => x._id !== action.payload._id
         ),
+      };
+    case ACTION_TYPES.GET_PRESENTER_WORKSHOP:
+      return {
+        ...state,
+        presenterWorkshop: action.payload,
       };
     default:
       return state;

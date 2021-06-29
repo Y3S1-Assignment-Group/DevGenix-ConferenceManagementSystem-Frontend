@@ -43,7 +43,7 @@ export const adminRegister = (data, OnSuccess, OnFailure) => (dispatch) => {
 };
 
 export const loginAdmin = (data, OnSuccess, OnFailure) => (dispatch) => {
-  reviewerApi
+  adminApi
     .auth()
     .login(data)
     .then((response) => {

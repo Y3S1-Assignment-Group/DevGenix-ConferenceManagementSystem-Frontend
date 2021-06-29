@@ -31,7 +31,7 @@ class EditorTable extends Component {
                   {this.props.editorList.map((singleEditor, index) => {
                     return (
                       <tr>
-                        <th scope="row">{index}</th>
+                        <th scope="row">{++index}</th>
                         <td>{singleEditor.firstName}</td>
                         <td>{singleEditor.lastName}</td>
                         <td>{singleEditor.email}</td>

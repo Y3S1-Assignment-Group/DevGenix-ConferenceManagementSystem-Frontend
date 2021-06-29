@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Table, Card, CardBody } from "reactstrap";
 import * as actions from "../../../../actions/reviewerActions";
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 
 export class ReviewerTable extends Component {
   componentDidMount() {
@@ -29,18 +29,17 @@ export class ReviewerTable extends Component {
                     </tr>
                   </thead>
                   <tbody>
-                  {this.props.reviewerList &&
-                    this.props.reviewerList.map((singleReviewer, index) => {
-
-                    return (
-                        <tr>
-                          <th scope="row">{index}</th>
-                          <td>{singleReviewer.firstName}</td>
-                          <td>{singleReviewer.lastName}</td>
-                          <td>{singleReviewer.email}</td>
-                        </tr>
-                    );
-                  })}
+                    {this.props.reviewerList &&
+                      this.props.reviewerList.map((singleReviewer, index) => {
+                        return (
+                          <tr>
+                            <th scope="row">{++index}</th>
+                            <td>{singleReviewer.firstName}</td>
+                            <td>{singleReviewer.lastName}</td>
+                            <td>{singleReviewer.email}</td>
+                          </tr>
+                        );
+                      })}
                   </tbody>
                 </Table>
               </div>
