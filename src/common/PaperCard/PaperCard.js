@@ -55,7 +55,7 @@ export class PaperCard extends Component {
                   Your research paper has been approved
                 </p>
                 {this.props.reasearchPaper.paid ? (
-                  ""
+                  <button className="btn btn-success">Paid</button>
                 ) : (
                   <StripeCheckout role="RESEARCHER" amount="1000.00" />
                 )}

@@ -13,41 +13,40 @@ import {
 } from "reactstrap";
 import Navbar from "../../common/Navbar/Navbar";
 import Footer from "../../common/Footer/Footer";
-import {storage} from "../../firebase";
+import { storage } from "../../firebase";
 import Progress from "../../common/ProgressBar/Progress";
 import * as actions from "../../../actions/authActions";
 import * as workshopActions from "../../../actions/workshopActions";
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 
 class RegRearseacher extends Component {
-
   constructor(props) {
     super(props);
-    this.handleCheckboxChange = this.handleCheckboxChange.bind(this)
+    this.handleCheckboxChange = this.handleCheckboxChange.bind(this);
     this.onValueChange = this.onValueChange.bind(this);
     this.uploadImage = this.uploadImage.bind(this);
     this.onRegister = this.onRegister.bind(this);
-    this.state ={
-      firstName:"",
-      lastName:"",
-      email:"",
-      password:"",
-      jobStatus:"",
-      universityOrWorkPlace:"",
-      statementOfInterest:"",
-      contactNumber:"",
-      paid:"",
+    this.state = {
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: "",
+      jobStatus: "",
+      universityOrWorkPlace: "",
+      statementOfInterest: "",
+      contactNumber: "",
+      paid: "",
       profileImg: "",
       paperTitle: "",
       description: "",
       submittedDate: "",
       paperLink: "",
-      approved:"",
+      approved: "",
 
-      workshops:[
+      workshops: [
         {
-          workshopName:""
-        }
+          workshopName: "",
+        },
       ],
 
       processStatus: false,
@@ -64,26 +63,31 @@ class RegRearseacher extends Component {
 
       uploadProfilePercentage: 0,
       uploadFilePercentage: 0,
-    }
+    };
   }
 
   componentDidMount() {
     this.props.fetchAllApprovedWorkshops();
-
   }
 
   handleCheckboxChange = (event) => {
     let singleWorkshop = {
-      workshopName:event.target.value
-    }
+      workshopName: event.target.value,
+    };
     if (event.target.checked) {
       if (!this.state.workshops.includes(singleWorkshop.workshopName)) {
-        this.setState(prevState => ({ workshops: [...prevState.workshops, singleWorkshop]}))
+        this.setState((prevState) => ({
+          workshops: [...prevState.workshops, singleWorkshop],
+        }));
       }
     } else {
-      this.setState(prevState => ({ workshops: prevState.workshops.filter(day => day.workshopName !== singleWorkshop.workshopName) }));
+      this.setState((prevState) => ({
+        workshops: prevState.workshops.filter(
+          (day) => day.workshopName !== singleWorkshop.workshopName
+        ),
+      }));
     }
-  }
+  };
 
   onValueChange(e) {
     this.setState({ [e.target.name]: e.target.value });
@@ -106,10 +110,10 @@ class RegRearseacher extends Component {
       jobStatus: this.state.jobStatus,
       universityOrWorkPlace: this.state.universityOrWorkPlace,
       contactNumber: this.state.contactNumber,
-      statementOfInterest:this.state.statementOfInterest,
+      statementOfInterest: this.state.statementOfInterest,
       profileImg: this.state.profileImg,
-      paid:false,
-      workshopAttends :this.state.workshops,
+      paid: false,
+      workshopAttends: this.state.workshops,
       researchPaper: {
         paperTitle: this.state.paperTitle,
         description: this.state.description,
@@ -117,25 +121,24 @@ class RegRearseacher extends Component {
         submittedDate: new Date(),
         approved: false,
       },
-
     };
 
-
     this.props.researcherRegister(
-        registerPresenterObj,
-        () => {
-          this.setState({
-            processStatusAlert: "alert alert-success",
-            processStatusMessage: "Register successful",
-          });
-        },
-        () => {
-          this.setState({
-            processStatusAlert: "alert alert-danger",
-            processStatusMessage:
-                "Something went wrong. Please with different email.",
-          });
-        }
+      registerPresenterObj,
+      () => {
+        this.setState({
+          processStatusAlert: "alert alert-success",
+          processStatusMessage: "Register successful",
+        });
+        window.location = "/";
+      },
+      () => {
+        this.setState({
+          processStatusAlert: "alert alert-danger",
+          processStatusMessage:
+            "Something went wrong. Please with different email.",
+        });
+      }
     );
   }
 
@@ -147,36 +150,36 @@ class RegRearseacher extends Component {
         fileProcessStatusMessage: "File Uploading...",
       });
       const uploadTask = storage
-          .ref(`researchpaper/${e.target.files[0].name}`)
-          .put(e.target.files[0]);
+        .ref(`researchpaper/${e.target.files[0].name}`)
+        .put(e.target.files[0]);
       uploadTask.on(
-          "state_changed",
-          (snapshot) => {
-            //progress function
-            const progress = Math.round(
-                (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-            );
-            this.setState({ uploadFilePercentage: progress });
-          },
-          (error) => {
-            //error function
-            console.log(error);
-          },
-          () => {
-            //complete function
-            storage
-                .ref("researchpaper")
-                .child(e.target.files[0].name)
-                .getDownloadURL()
-                .then((url) => {
-                  console.log(url);
-                  this.setState({ fileLink: url });
-                  this.setState({
-                    fileProcessStatusAlert: "alert alert-success",
-                    fileProcessStatusMessage: "File uploaded successfully",
-                  });
-                });
-          }
+        "state_changed",
+        (snapshot) => {
+          //progress function
+          const progress = Math.round(
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+          );
+          this.setState({ uploadFilePercentage: progress });
+        },
+        (error) => {
+          //error function
+          console.log(error);
+        },
+        () => {
+          //complete function
+          storage
+            .ref("researchpaper")
+            .child(e.target.files[0].name)
+            .getDownloadURL()
+            .then((url) => {
+              console.log(url);
+              this.setState({ fileLink: url });
+              this.setState({
+                fileProcessStatusAlert: "alert alert-success",
+                fileProcessStatusMessage: "File uploaded successfully",
+              });
+            });
+        }
       );
     } else {
       this.setState({
@@ -194,36 +197,36 @@ class RegRearseacher extends Component {
         profileProcessStatusMessage: "Image Uploading...",
       });
       const uploadTask = storage
-          .ref(`researcher/${e.target.files[0].name}`)
-          .put(e.target.files[0]);
+        .ref(`researcher/${e.target.files[0].name}`)
+        .put(e.target.files[0]);
       uploadTask.on(
-          "state_changed",
-          (snapshot) => {
-            //progress function
-            const progress = Math.round(
-                (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-            );
-            this.setState({ uploadProfilePercentage: progress });
-          },
-          (error) => {
-            //error function
-            console.log(error);
-          },
-          () => {
-            //complete function
-            storage
-                .ref("researcher")
-                .child(e.target.files[0].name)
-                .getDownloadURL()
-                .then((url) => {
-                  console.log(url);
-                  this.setState({ profileImg: url });
-                  this.setState({
-                    profileProcessStatusAlert: "alert alert-success",
-                    profileProcessStatusMessage: "Image uploaded successfully",
-                  });
-                });
-          }
+        "state_changed",
+        (snapshot) => {
+          //progress function
+          const progress = Math.round(
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+          );
+          this.setState({ uploadProfilePercentage: progress });
+        },
+        (error) => {
+          //error function
+          console.log(error);
+        },
+        () => {
+          //complete function
+          storage
+            .ref("researcher")
+            .child(e.target.files[0].name)
+            .getDownloadURL()
+            .then((url) => {
+              console.log(url);
+              this.setState({ profileImg: url });
+              this.setState({
+                profileProcessStatusAlert: "alert alert-success",
+                profileProcessStatusMessage: "Image uploaded successfully",
+              });
+            });
+        }
       );
     } else {
       this.setState({
@@ -254,7 +257,9 @@ class RegRearseacher extends Component {
                       name="firstName"
                       id="firstName"
                       placeholder="Enter first name"
-                      onChange={(e) => {this.onValueChange(e);}}
+                      onChange={(e) => {
+                        this.onValueChange(e);
+                      }}
                       required
                     />
                   </Col>
@@ -270,7 +275,9 @@ class RegRearseacher extends Component {
                       name="lastName"
                       id="lastName"
                       placeholder="Enter last name"
-                      onChange={(e) => {this.onValueChange(e);}}
+                      onChange={(e) => {
+                        this.onValueChange(e);
+                      }}
                       required
                     />
                   </Col>
@@ -286,7 +293,9 @@ class RegRearseacher extends Component {
                       name="contactNumber"
                       id="contactNumber"
                       placeholder="Enter the telephone number"
-                      onChange={(e) => {this.onValueChange(e);}}
+                      onChange={(e) => {
+                        this.onValueChange(e);
+                      }}
                       required
                     />
                   </Col>
@@ -302,7 +311,9 @@ class RegRearseacher extends Component {
                       name="email"
                       id="email"
                       placeholder="Enter email"
-                      onChange={(e) => {this.onValueChange(e);}}
+                      onChange={(e) => {
+                        this.onValueChange(e);
+                      }}
                       required
                     />
                   </Col>
@@ -317,7 +328,9 @@ class RegRearseacher extends Component {
                       name="password"
                       id="password"
                       placeholder="Enter password"
-                      onChange={(e) => {this.onValueChange(e);}}
+                      onChange={(e) => {
+                        this.onValueChange(e);
+                      }}
                       required
                     />
                   </Col>
@@ -328,7 +341,15 @@ class RegRearseacher extends Component {
                     Job Status
                   </Label>
                   <Col sm={10}>
-                    <Input type="select" name="jobStatus" id="jobstatus" onChange={(e) => {this.onValueChange(e);}} required>
+                    <Input
+                      type="select"
+                      name="jobStatus"
+                      id="jobstatus"
+                      onChange={(e) => {
+                        this.onValueChange(e);
+                      }}
+                      required
+                    >
                       <option unselectable>Select Job Status</option>
                       <option value="Professional">Professional</option>
                       <option value="Student">Student</option>
@@ -342,7 +363,15 @@ class RegRearseacher extends Component {
                     Profile picture
                   </Label>
                   <Col sm={10}>
-                    <Input type="file" name="file" id="exampleFile" onChange={(e) => {this.uploadImage(e);}} required/>
+                    <Input
+                      type="file"
+                      name="file"
+                      id="exampleFile"
+                      onChange={(e) => {
+                        this.uploadImage(e);
+                      }}
+                      required
+                    />
                     <FormText color="muted">
                       This is some placeholder block-level help text for the
                       above input. It's a bit lighter and easily wraps to a new
@@ -353,14 +382,14 @@ class RegRearseacher extends Component {
 
                 <FormGroup>
                   {this.state.profileProcessStatus ? (
-                      <div
-                          className={this.state.profileProcessStatusAlert}
-                          role="alert"
-                      >
-                        {this.state.profileProcessStatusMessage}
-                      </div>
+                    <div
+                      className={this.state.profileProcessStatusAlert}
+                      role="alert"
+                    >
+                      {this.state.profileProcessStatusMessage}
+                    </div>
                   ) : (
-                      ""
+                    ""
                   )}
                 </FormGroup>
 
@@ -378,7 +407,9 @@ class RegRearseacher extends Component {
                       name="universityOrWorkPlace"
                       id="universityWorkplace"
                       placeholder="Enter the university or the workplace"
-                      onChange={(e) => {this.onValueChange(e);}}
+                      onChange={(e) => {
+                        this.onValueChange(e);
+                      }}
                     />
                   </Col>
                 </FormGroup>
@@ -388,7 +419,14 @@ class RegRearseacher extends Component {
                     Statement of Interests
                   </Label>
                   <Col sm={10}>
-                    <Input type="textarea" name="statementOfInterest" id="exampleText" onChange={(e) => {this.onValueChange(e);}}/>
+                    <Input
+                      type="textarea"
+                      name="statementOfInterest"
+                      id="exampleText"
+                      onChange={(e) => {
+                        this.onValueChange(e);
+                      }}
+                    />
                   </Col>
                 </FormGroup>
 
@@ -397,13 +435,21 @@ class RegRearseacher extends Component {
                     Select if you are attending{" "}
                   </Label>
                   <Col sm={{ size: 10 }}>
-                    {this.props.approvedWorkshopList.map(singleWorkshop => {return(
+                    {this.props.approvedWorkshopList.map((singleWorkshop) => {
+                      return (
                         <FormGroup check>
                           <Label check>
-                            <Input type="checkbox" id={singleWorkshop.workshop.workshopName} value={singleWorkshop.workshop.workshopName} onChange={ this.handleCheckboxChange}/> {singleWorkshop.workshop.workshopName}
+                            <Input
+                              type="checkbox"
+                              id={singleWorkshop.workshop.workshopName}
+                              value={singleWorkshop.workshop.workshopName}
+                              onChange={this.handleCheckboxChange}
+                            />{" "}
+                            {singleWorkshop.workshop.workshopName}
                           </Label>
                         </FormGroup>
-                    )})}
+                      );
+                    })}
                   </Col>
                 </FormGroup>
                 <br />
@@ -438,10 +484,14 @@ class RegRearseacher extends Component {
                     Wordfile
                   </Label>
                   <Col sm={10}>
-                    <Input type="file" name="file" id="exampleFile" onChange={(e) => {
-                      this.uploadFile(e);
-                    }}
-                           required
+                    <Input
+                      type="file"
+                      name="file"
+                      id="exampleFile"
+                      onChange={(e) => {
+                        this.uploadFile(e);
+                      }}
+                      required
                     />
                     <FormText color="muted">
                       This is some placeholder block-level help text for the
@@ -453,21 +503,19 @@ class RegRearseacher extends Component {
 
                 <FormGroup>
                   {this.state.fileProcessStatus ? (
-                      <div
-                          className={this.state.fileProcessStatusAlert}
-                          role="alert"
-                      >
-                        {this.state.fileProcessStatusMessage}
-                      </div>
+                    <div
+                      className={this.state.fileProcessStatusAlert}
+                      role="alert"
+                    >
+                      {this.state.fileProcessStatusMessage}
+                    </div>
                   ) : (
-                      ""
+                    ""
                   )}
                 </FormGroup>
 
                 <FormGroup row>
-                  <Progress
-                      percentage={this.state.uploadFilePercentage}
-                  />
+                  <Progress percentage={this.state.uploadFilePercentage} />
                 </FormGroup>
 
                 <FormGroup row>
@@ -490,11 +538,11 @@ class RegRearseacher extends Component {
 
                 <FormGroup>
                   {this.state.processStatus ? (
-                      <div className={this.state.processStatusAlert} role="alert">
-                        {this.state.processStatusMessage}
-                      </div>
+                    <div className={this.state.processStatusAlert} role="alert">
+                      {this.state.processStatusMessage}
+                    </div>
                   ) : (
-                      ""
+                    ""
                   )}
                 </FormGroup>
 
@@ -522,9 +570,7 @@ class RegRearseacher extends Component {
 const mapActionToProps = {
   researcherRegister: actions.ReasearcherRegister,
   fetchAllApprovedWorkshops: workshopActions.fetchAllApprovedWorkshops,
-
 };
-
 
 const mapStateToProps = (state) => ({
   approvedWorkshopList: state.workshopReducer.approvedWorkshopList,

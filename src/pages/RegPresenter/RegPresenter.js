@@ -106,6 +106,7 @@ class RegPresenter extends Component {
           processStatusAlert: "alert alert-success",
           processStatusMessage: "Register successful",
         });
+        window.location = "/";
       },
       () => {
         this.setState({

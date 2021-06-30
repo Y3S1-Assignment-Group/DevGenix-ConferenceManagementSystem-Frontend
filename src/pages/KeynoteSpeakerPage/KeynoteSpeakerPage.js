@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import * as actions from "../../../actions/workshopActions";
 import { connect } from "react-redux";
-import Navbar from "../../common/Navbar/Navbar";
+import NavbarAlt from "../../common/Navbar/NavbarAlt";
 import KeynoteCard from "../../common/KeynoteCard/KeynoteCard";
-import { CardColumns, Container } from "reactstrap";
+import { Container } from "reactstrap";
 import Footer from "../../common/Footer/Footer";
 
 class KeynoteSpeakerPage extends Component {
@@ -16,7 +16,7 @@ class KeynoteSpeakerPage extends Component {
   render() {
     return (
       <div>
-        <Navbar />
+        <NavbarAlt />
         <Container className="mt-5">
           <div className="row">
             {this.props.approvedWorkshopList &&

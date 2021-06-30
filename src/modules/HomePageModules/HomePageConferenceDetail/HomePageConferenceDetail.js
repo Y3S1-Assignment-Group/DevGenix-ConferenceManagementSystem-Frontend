@@ -64,7 +64,13 @@ export class HomePageConferenceDetail extends Component {
     return (
       <div className="container">
         <div className="row mt-3">
-          <div className="col-lg-6 col-md-6 col-sm-12">
+          <div
+            className="col-lg-6 col-md-6 col-sm-12"
+            data-aos="fade-zoom-in"
+            data-aos-easing="ease-in-sine"
+            data-aos-offset="500"
+            data-aos-duration="1000"
+          >
             <img
               src="https://devcom.com/wp-content/uploads/2019/10/DevCom_Logo_BlueTransparent.png"
               alt="imgLogo"
@@ -77,7 +83,14 @@ export class HomePageConferenceDetail extends Component {
               .slice(0, 1)
               .map((singleConfference) => {
                 return (
-                  <div className="col-lg-6 col-md-6 col-sm-12 conferenceDetailsSection">
+                  <div
+                    className="col-lg-6 col-md-6 col-sm-12 conferenceDetailsSection"
+                    data-aos="fade-zoom-in"
+                    data-aos-easing="ease-in-sine"
+                    data-aos-offset="500"
+                    data-aos-delay="300"
+                    data-aos-duration="1000"
+                  >
                     <div className="container">
                       <h1 className="mb-0 font-weight-bold display-1">
                         {singleConfference.confTitle}
@@ -95,7 +108,7 @@ export class HomePageConferenceDetail extends Component {
                       <h2 className="mt-3">{singleConfference.venue}</h2>
                     </div>
 
-                    <div className="mt-3 mb-3">
+                    <div>
                       <CountDownSection
                         conferenceDate={singleConfference.toTime}
                       />

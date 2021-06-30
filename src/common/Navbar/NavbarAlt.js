@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import * as actions from "../../../actions/authActions";
 import "./Navbar.css";
 
-export class Navbar extends Component {
+export class NavbarAlt extends Component {
   render() {
     return (
       <div>
@@ -40,24 +40,6 @@ export class Navbar extends Component {
                   style={{ color: "#ffffff" }}
                 >
                   HOME
-                </a>
-              </li>
-              <li className="nav-item active">
-                <a
-                  className="nav-link navLinkTab js-scroll-trigger"
-                  href="#about"
-                  style={{ color: "#ffffff" }}
-                >
-                  ABOUT
-                </a>
-              </li>
-              <li className="nav-item active">
-                <a
-                  className="nav-link navLinkTab js-scroll-trigger"
-                  href="#news"
-                  style={{ color: "#ffffff" }}
-                >
-                  NEWS
                 </a>
               </li>
               <li className="nav-item active">
@@ -235,4 +217,4 @@ const mapActionToProps = {
   logout: actions.logout,
 };
 
-export default connect(mapStateToProps, mapActionToProps)(Navbar);
+export default connect(mapStateToProps, mapActionToProps)(NavbarAlt);

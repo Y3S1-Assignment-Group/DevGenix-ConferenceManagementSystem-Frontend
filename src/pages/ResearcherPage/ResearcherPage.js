@@ -1,13 +1,15 @@
 import React, { Component } from "react";
-import Navbar from "../../common/Navbar/Navbar";
+import Footer from "../../common/Footer/Footer";
+import NavbarAlt from "../../common/Navbar/NavbarAlt";
 import ResearcherDashboard from "../../modules/ResearcherPageModules/ResearcherDashboard";
 
 export class ResearcherPage extends Component {
   render() {
     return (
       <div>
-        <Navbar />
+        <NavbarAlt />
         <ResearcherDashboard />
+        <Footer />
       </div>
     );
   }
