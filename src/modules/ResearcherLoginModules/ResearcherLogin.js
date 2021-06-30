@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
   Container,
   Card,
@@ -8,13 +8,16 @@ import {
   FormGroup,
   Label,
   Input,
-  Button, Modal, ModalHeader, ModalBody,
-} from 'reactstrap';
-import regImg from 'url:../../assets/regImg.svg';
+  Button,
+  Modal,
+  ModalHeader,
+  ModalBody,
+} from "reactstrap";
+import regImg from "url:../../assets/regImg.svg";
 import * as actions from "../../../actions/authActions";
 import * as reasearcherActions from "../../../actions/researcherActions";
-import {connect} from "react-redux";
-import {BsCalendar} from "react-icons/bs";
+import { connect } from "react-redux";
+import { BsCalendar } from "react-icons/bs";
 import StripeCheckout from "../../common/StripePayment/StripeCheckout";
 
 export class ResearcherLogin extends Component {
@@ -57,62 +60,62 @@ export class ResearcherLogin extends Component {
     };
 
     this.props.ReasearcherLogin(
-        loginReasearcherObj,
-          () => {
-          this.setState({
-            processStatusAlert: "alert alert-success",
-            processStatusMessage: "Login successful",
-          });
-          window.location="/"
-        },
-        () => {
-          this.setState({
-            processStatusAlert: "alert alert-danger",
-            processStatusMessage:
-                "Username or password incorrect. Please try again.",
-          });
-        }
+      loginReasearcherObj,
+      () => {
+        this.setState({
+          processStatusAlert: "alert alert-success",
+          processStatusMessage: "Login successful",
+        });
+        window.location = "/researcher";
+      },
+      () => {
+        this.setState({
+          processStatusAlert: "alert alert-danger",
+          processStatusMessage:
+            "Username or password incorrect. Please try again.",
+        });
+      }
     );
   }
 
   render() {
     return (
       <div>
-        <Container className='mt-5'>
+        <Container className="mt-5">
           <Card>
-            <CardBody className='p-5'>
-              <div className='row'>
-                <div className='col-lg-6 col-md-6 container'>
-                  <img src={regImg} alt='regImg' className='img-fluid' />
+            <CardBody className="p-5">
+              <div className="row">
+                <div className="col-lg-6 col-md-6 container">
+                  <img src={regImg} alt="regImg" className="img-fluid" />
                 </div>
-                <div className='col-lg-6 col-md-6 container'>
-                  <h3 className='mb-2 mt-5 font-weight-bold'>
+                <div className="col-lg-6 col-md-6 container">
+                  <h3 className="mb-2 mt-5 font-weight-bold">
                     RESEACHER LOGIN
                   </h3>
                   <hr />
                   <Form onSubmit={this.onLogin}>
                     <FormGroup>
                       {this.state.processStatus ? (
-                          <div
-                              className={this.state.processStatusAlert}
-                              role="alert"
-                          >
-                            {this.state.processStatusMessage}
-                          </div>
+                        <div
+                          className={this.state.processStatusAlert}
+                          role="alert"
+                        >
+                          {this.state.processStatusMessage}
+                        </div>
                       ) : (
-                          ""
+                        ""
                       )}
                     </FormGroup>
                     <FormGroup row>
-                      <Label for='email' sm={12}>
+                      <Label for="email" sm={12}>
                         Email
                       </Label>
                       <Col sm={10}>
                         <Input
-                          type='email'
-                          name='email'
-                          id='email'
-                          placeholder='Enter email'
+                          type="email"
+                          name="email"
+                          id="email"
+                          placeholder="Enter email"
                           onChange={(e) => {
                             this.onValueChange(e);
                           }}
@@ -120,15 +123,15 @@ export class ResearcherLogin extends Component {
                       </Col>
                     </FormGroup>
                     <FormGroup row>
-                      <Label for='password' sm={12}>
+                      <Label for="password" sm={12}>
                         Password
                       </Label>
                       <Col sm={10}>
                         <Input
-                          type='password'
-                          name='password'
-                          id='password'
-                          placeholder='Enter password'
+                          type="password"
+                          name="password"
+                          id="password"
+                          placeholder="Enter password"
                           onChange={(e) => {
                             this.onValueChange(e);
                           }}
@@ -138,7 +141,9 @@ export class ResearcherLogin extends Component {
 
                     <FormGroup row>
                       <Col sm={12}>
-                        <Button className='btn btn-warning' type="submit">Submit</Button>
+                        <Button className="btn btn-warning" type="submit">
+                          Submit
+                        </Button>
                       </Col>
                     </FormGroup>
                   </Form>
@@ -160,16 +165,16 @@ export class ResearcherLogin extends Component {
                   <BsCalendar fontSize="1.5em" />{" "}
                   <span>
                     {" "}
-                    Your reasearch paper has been approved. Please pay Rs1000.00 to proceed.
+                    Your reasearch paper has been approved. Please pay Rs1000.00
+                    to proceed.
                   </span>
                 </h6>
-                <br/>
-                <StripeCheckout role="REASEARCHER" amount="1000.00"/>
+                <br />
+                <StripeCheckout role="REASEARCHER" amount="1000.00" />
               </div>
             </ModalBody>
           </Modal>
         </div>
-
       </div>
     );
   }
@@ -181,8 +186,6 @@ const mapStateToProps = (state) => ({
 
 const mapActionToProps = {
   ReasearcherLogin: actions.ReasearcherLogin,
-
-
 };
 
 export default connect(mapStateToProps, mapActionToProps)(ResearcherLogin);
