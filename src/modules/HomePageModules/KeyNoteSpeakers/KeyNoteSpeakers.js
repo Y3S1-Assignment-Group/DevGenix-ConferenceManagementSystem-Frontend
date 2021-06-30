@@ -16,22 +16,30 @@ export class KeyNoteSpeakers extends Component {
     return (
       <Container className="mt-5">
         <h1 className="text-white text-center">KEYNOTES</h1>
-        <CardColumns>
-          {this.props.approvedWorkshopList &&
-            this.props.approvedWorkshopList
-              .reverse()
-              .slice(0, 2)
-              .map((singleApprovedWorkshop) => {
-                return <KeynoteCard workshop={singleApprovedWorkshop} />;
-              })}
 
-          {this.props.approvedWorkshopList &&
-            this.props.approvedWorkshopList
-              .slice(2, 4)
-              .map((singleApprovedWorkshop) => {
-                return <NavigationCard workshop={singleApprovedWorkshop} />;
-              })}
-        </CardColumns>
+        <div
+          data-aos="fade-up"
+          data-aos-easing="ease-in-sine"
+          data-aos-offset="100"
+          data-aos-duration="1000"
+        >
+          <CardColumns>
+            {this.props.approvedWorkshopList &&
+              this.props.approvedWorkshopList
+                .reverse()
+                .slice(0, 2)
+                .map((singleApprovedWorkshop) => {
+                  return <KeynoteCard workshop={singleApprovedWorkshop} />;
+                })}
+
+            {this.props.approvedWorkshopList &&
+              this.props.approvedWorkshopList
+                .slice(2, 4)
+                .map((singleApprovedWorkshop) => {
+                  return <NavigationCard workshop={singleApprovedWorkshop} />;
+                })}
+          </CardColumns>
+        </div>
       </Container>
     );
   }

@@ -1,13 +1,15 @@
 import React, { Component } from "react";
-import Navbar from "../../common/Navbar/Navbar";
+import Footer from "../../common/Footer/Footer";
+import NavbarAlt from "../../common/Navbar/NavbarAlt";
 import PresenterDashboard from "../../modules/PresenterPageModules/PresenterDashboard";
 
 export class PresenterPage extends Component {
   render() {
     return (
       <div>
-        <Navbar />
+        <NavbarAlt />
         <PresenterDashboard />
+        <Footer />
       </div>
     );
   }

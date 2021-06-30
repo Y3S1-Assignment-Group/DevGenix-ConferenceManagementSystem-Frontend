@@ -9,7 +9,13 @@ export class HomeAboutSection extends Component {
         className="pt-4"
         style={{ backgroundColor: "#350142", color: "#ffffff" }}
       >
-        <div className="container text-center pt-5 pb-5">
+        <div
+          className="container text-center pt-5 pb-5"
+          data-aos="fade-zoom-in"
+          data-aos-easing="ease-in-sine"
+          data-aos-offset="100"
+          data-aos-duration="1000"
+        >
           <img
             src={AboutImg}
             className="img-fluid"

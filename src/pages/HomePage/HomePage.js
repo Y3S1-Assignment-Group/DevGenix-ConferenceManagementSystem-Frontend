@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import HomeAboutSection from "../../modules/HomePageModules/HomeAboutSection/HomeAboutSection";
 import HomeHeroSection from "../../modules/HomePageModules/HomeHeroSection/HomeHeroSection";
 import KeyNoteSpeakers from "../../modules/HomePageModules/KeyNoteSpeakers/KeyNoteSpeakers";
@@ -8,6 +10,9 @@ import GetInTouch from "../../modules/HomePageModules/GetInTouchSection/GetInTou
 import TimeLineSection from "../../modules/HomePageModules/TimeLineSection/TimeLineSection";
 
 class HomePage extends Component {
+  componentDidMount() {
+    AOS.init();
+  }
   render() {
     return (
       <div style={{ height: "100vh" }}>

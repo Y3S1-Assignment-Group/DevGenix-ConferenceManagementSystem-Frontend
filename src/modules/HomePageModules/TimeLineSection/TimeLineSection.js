@@ -28,106 +28,113 @@ export default function TimeLineSection() {
       <h1 className="text-white text-center">IMPORTANT DATES</h1>
       <br />
       <br />
-      <Timeline align="alternate">
-        <TimelineItem>
-          <TimelineOppositeContent>
-            <Typography>
-              <span className="timeLineEventDate">1st July 2021</span>
-            </Typography>
-          </TimelineOppositeContent>
-          <TimelineSeparator>
-            <TimelineDot />
-            <TimelineConnector />
-          </TimelineSeparator>
-          <TimelineContent>
-            <Typography>
-              <span className="timeLineEvent">PAPER SUBMISSION (OPEN)</span>
-            </Typography>
-          </TimelineContent>
-        </TimelineItem>
-        <TimelineItem>
-          <TimelineOppositeContent>
-            <Typography>
-              <span className="timeLineEventDate">1st September 2021</span>
-            </Typography>
-          </TimelineOppositeContent>
-          <TimelineSeparator>
-            <TimelineDot />
-            <TimelineConnector />
-          </TimelineSeparator>
-          <TimelineContent>
-            <Typography>
-              <span className="timeLineEvent">PAPER SUBMISSION (CLOSE)</span>
-            </Typography>
-          </TimelineContent>
-        </TimelineItem>
-        <TimelineItem>
-          <TimelineOppositeContent>
-            <Typography>
-              <span className="timeLineEventDate">25th October 2021</span>
-            </Typography>
-          </TimelineOppositeContent>
-          <TimelineSeparator>
-            <TimelineDot />
-            <TimelineConnector />
-          </TimelineSeparator>
-          <TimelineContent>
-            <Typography>
-              <span className="timeLineEvent">ACCEPTANCE NOTIFICATION</span>
-            </Typography>
-          </TimelineContent>
-        </TimelineItem>
-        <TimelineItem>
-          <TimelineOppositeContent>
-            <Typography>
-              <span className="timeLineEventDate">25th October 2021</span>
-            </Typography>
-          </TimelineOppositeContent>
-          <TimelineSeparator>
-            <TimelineDot />
-            <TimelineConnector />
-          </TimelineSeparator>
-          <TimelineContent>
-            <Typography>
-              <span className="timeLineEvent">REGISTRATION (ATTENDEE)</span>
-            </Typography>
-          </TimelineContent>
-        </TimelineItem>
-        <TimelineItem>
-          <TimelineOppositeContent>
-            <Typography>
-              <span className="timeLineEventDate">25th November 2021 </span>
-            </Typography>
-          </TimelineOppositeContent>
-          <TimelineSeparator>
-            <TimelineDot />
-            <TimelineConnector />
-          </TimelineSeparator>
-          <TimelineContent>
-            <Typography>
-              <span className="timeLineEvent">REGISTRATION (CLOSED)</span>
-            </Typography>
-          </TimelineContent>
-        </TimelineItem>
-        <TimelineItem>
-          <TimelineOppositeContent>
-            <Typography>
-              <span className="timeLineEventDate">
-                9th, 10th, 11th December 2021
-              </span>
-            </Typography>
-          </TimelineOppositeContent>
-          <TimelineSeparator>
-            <TimelineDot />
-            <TimelineConnector />
-          </TimelineSeparator>
-          <TimelineContent>
-            <Typography>
-              <span className="timeLineEvent">CONFERENCE</span>
-            </Typography>
-          </TimelineContent>
-        </TimelineItem>
-      </Timeline>
+      <div
+        data-aos="fade-zoom-in"
+        data-aos-easing="ease-in-sine"
+        data-aos-offset="100"
+        data-aos-duration="1000"
+      >
+        <Timeline align="alternate">
+          <TimelineItem>
+            <TimelineOppositeContent>
+              <Typography>
+                <span className="timeLineEventDate">1st July 2021</span>
+              </Typography>
+            </TimelineOppositeContent>
+            <TimelineSeparator>
+              <TimelineDot />
+              <TimelineConnector />
+            </TimelineSeparator>
+            <TimelineContent>
+              <Typography>
+                <span className="timeLineEvent">PAPER SUBMISSION (OPEN)</span>
+              </Typography>
+            </TimelineContent>
+          </TimelineItem>
+          <TimelineItem>
+            <TimelineOppositeContent>
+              <Typography>
+                <span className="timeLineEventDate">1st September 2021</span>
+              </Typography>
+            </TimelineOppositeContent>
+            <TimelineSeparator>
+              <TimelineDot />
+              <TimelineConnector />
+            </TimelineSeparator>
+            <TimelineContent>
+              <Typography>
+                <span className="timeLineEvent">PAPER SUBMISSION (CLOSE)</span>
+              </Typography>
+            </TimelineContent>
+          </TimelineItem>
+          <TimelineItem>
+            <TimelineOppositeContent>
+              <Typography>
+                <span className="timeLineEventDate">25th October 2021</span>
+              </Typography>
+            </TimelineOppositeContent>
+            <TimelineSeparator>
+              <TimelineDot />
+              <TimelineConnector />
+            </TimelineSeparator>
+            <TimelineContent>
+              <Typography>
+                <span className="timeLineEvent">ACCEPTANCE NOTIFICATION</span>
+              </Typography>
+            </TimelineContent>
+          </TimelineItem>
+          <TimelineItem>
+            <TimelineOppositeContent>
+              <Typography>
+                <span className="timeLineEventDate">25th October 2021</span>
+              </Typography>
+            </TimelineOppositeContent>
+            <TimelineSeparator>
+              <TimelineDot />
+              <TimelineConnector />
+            </TimelineSeparator>
+            <TimelineContent>
+              <Typography>
+                <span className="timeLineEvent">REGISTRATION (ATTENDEE)</span>
+              </Typography>
+            </TimelineContent>
+          </TimelineItem>
+          <TimelineItem>
+            <TimelineOppositeContent>
+              <Typography>
+                <span className="timeLineEventDate">25th November 2021 </span>
+              </Typography>
+            </TimelineOppositeContent>
+            <TimelineSeparator>
+              <TimelineDot />
+              <TimelineConnector />
+            </TimelineSeparator>
+            <TimelineContent>
+              <Typography>
+                <span className="timeLineEvent">REGISTRATION (CLOSED)</span>
+              </Typography>
+            </TimelineContent>
+          </TimelineItem>
+          <TimelineItem>
+            <TimelineOppositeContent>
+              <Typography>
+                <span className="timeLineEventDate">
+                  9th, 10th, 11th December 2021
+                </span>
+              </Typography>
+            </TimelineOppositeContent>
+            <TimelineSeparator>
+              <TimelineDot />
+              <TimelineConnector />
+            </TimelineSeparator>
+            <TimelineContent>
+              <Typography>
+                <span className="timeLineEvent">CONFERENCE</span>
+              </Typography>
+            </TimelineContent>
+          </TimelineItem>
+        </Timeline>
+      </div>
     </div>
   );
 }

@@ -18,7 +18,13 @@ export class LatestNews extends Component {
           {this.props.latestNewsList &&
             this.props.latestNewsList.map((singleNews) => {
               return (
-                <div className="col-lg-4 col-sm-12 mt-3">
+                <div
+                  className="col-lg-4 col-sm-12 mt-3"
+                  data-aos="fade-up"
+                  data-aos-easing="ease-in-sine"
+                  data-aos-offset="500"
+                  data-aos-duration="1000"
+                >
                   <Card className="CardDiv">
                     <CardBody>
                       <CardText>{singleNews.message}</CardText>
