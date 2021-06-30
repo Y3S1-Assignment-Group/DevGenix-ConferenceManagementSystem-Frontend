@@ -133,7 +133,17 @@ export class NavbarAlt extends Component {
                       {this.props.user.email}
                     </a>
                   </li>
-                ) : (
+                ) : this.props.user.role == "attendee" ? (
+                  <li className="nav-item active">
+                    <a
+                      className="nav-link navLinkTab js-scroll-trigger"
+                      href="/attendeeProfile"
+                      style={{ color: "#ffffff" }}
+                    >
+                      {this.props.user.email}
+                    </a>
+                  </li>
+                ): (
                   ""
                 )}
                 <li className="nav-item active" style={{ cursor: "pointer" }}>

@@ -26,6 +26,7 @@ import AttendeeLoginPage from "../pages/AttendeeLoginPage/AttendeeLoginPage";
 import EditorLoginPage from "../pages/EditorLoginPage/EditorLoginPage";
 import ResearcherPage from "../pages/ResearcherPage/ResearcherPage";
 import PresenterPage from "../pages/PresenterPage/PresenterPage";
+import AttendeeProfilePage from '../pages/AttendeeLoginPage/AttendeeProfilePage';
 class RouteComponent extends Component {
   render() {
     return (
@@ -83,6 +84,7 @@ class RouteComponent extends Component {
           <Route path="/attendeeRegister" exact component={RegAttendee} />
           <Route path="/researcher" exact component={ResearcherPage} />
           <Route path="/presenter" exact component={PresenterPage} />
+	        <Route path='/attendeeProfile' exact component={AttendeeProfilePage} />
         </Switch>
       </Router>
     );

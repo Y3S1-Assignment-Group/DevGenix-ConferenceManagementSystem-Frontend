@@ -16,6 +16,8 @@ const attendeeApi = {
         axios.post(baseUrl + "/api/authAttendee", loginAttendee),
       getAllAttendees: () =>
         axios.get(baseUrl + "/api/authAttendee/all", config),
+      getAttendeeDetails: () =>
+        axios.get(baseUrl + "/api/authattendee/", config)
     };
   },
 };

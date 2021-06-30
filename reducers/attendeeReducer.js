@@ -3,6 +3,7 @@ import { ACTION_TYPES } from "../actions/attendeeActions";
 const initialState = {
   attendeeList: [],
   attendeeListPending: true,
+  attendeeDetailsList: [],
 };
 
 export const attendeeReducer = (state = initialState, action) => {
@@ -12,6 +13,11 @@ export const attendeeReducer = (state = initialState, action) => {
         ...state,
         attendeeList: [...action.payload],
         attendeeListPending: false,
+      };
+    case ACTION_TYPES.ATTENDEE_DETAILS:
+        return {
+          ...state,
+          attendeeDetailsList: [...action.payload],         
       };
     default:
       return state;
